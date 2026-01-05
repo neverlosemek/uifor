@@ -23,7 +23,7 @@ end;
 library.console = function(self, func)
 	func(("\n"):rep(57));
 end;
-library.signal = loadstring(game:HttpGet("https://lirp.mrbrainas.workers.dev/Signal", true))();
+library.signal = loadstring(game:HttpGet("https://raw.githubusercontent.com/neverlosemek/uifor/refs/heads/main/something", true))();
 local local_player = game:GetService("Players").LocalPlayer;
 local mouse = local_player:GetMouse();
 local http = game:GetService("HttpService");
