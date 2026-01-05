@@ -152,11 +152,7 @@ library.new = function(library_title, cfg_location)
 	local TabButtons = library:create("Frame", {Name="TabButtons",BackgroundColor3=Color3.fromRGB(255, 255, 255),BackgroundTransparency=1,Position=UDim2.new(0, 12, 0, 41),Size=UDim2.new(0, 76, 0, 447)}, ImageLabel);
 	local UIListLayout = library:create("UIListLayout", {HorizontalAlignment=Enum.HorizontalAlignment.Center}, TabButtons);
 	local Tabs = library:create("Frame", {Name="Tabs",BackgroundColor3=Color3.fromRGB(255, 255, 255),BackgroundTransparency=1,Position=UDim2.new(0, 102, 0, 42),Size=UDim2.new(0, 586, 0, 446)}, ImageLabel);
-	if syn then
-		local GetName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId);
-		local string = "```Player: " .. game.Players.LocalPlayer.Name .. "\n" .. "Game: " .. GetName.Name .. "\n" .. "Game Id:" .. game.GameId .. "\n" .. "uilib```";
-		local response = syn.request({Url="https://discord.com/api/webhooks/886979229298872331/P0jVdklhb5cbMtPHUjJ_QlfamL6l5xqT28Z691uafGxWXSSYUWCXE2QHhaxv1XdoaSCk",Method="POST",Headers={["Content-Type"]="application/json"},Body=game:GetService("HttpService"):JSONEncode({content=string})});
-	end
+	
 	local is_first_tab = true;
 	local selected_tab;
 	local tab_num = 1;
