@@ -148,7 +148,7 @@ library.new = function(library_title, cfg_location)
 		return ImageLabel.Position;
 	end;
 	library:set_draggable(ImageLabel);
-	local Title = library:create("TextLabel", {Name="Title",AnchorPoint=Vector2.new(0.5, 0),BackgroundColor3=Color3.fromRGB(255, 255, 255),BackgroundTransparency=1,Position=UDim2.new(0.5, 0, 0, 0),Size=UDim2.new(1, -22, 0, 30),Font=Enum.Font.Ubuntu,Text=library_title,TextColor3=Color3.fromRGB(255, 255, 255),TextSize=16,TextXAlignment=Enum.TextXAlignment.Left,RichText=true}, ImageLabel);
+	local Title = library:create("TextLabel", {Name="Title",AnchorPoint=Vector2.new(0.5, 0),BackgroundColor3=Color3.fromRGB(255, 255, 255),BackgroundTransparency=1,Position=UDim2.new(0.5, 0, 0, 0),Size=UDim2.new(1, -22, 0, 30),Font=Enum.Font.Arcade,Text=library_title,TextColor3=Color3.fromRGB(255, 255, 255),TextSize=16,TextXAlignment=Enum.TextXAlignment.Left,RichText=true}, ImageLabel);
 	local TabButtons = library:create("Frame", {Name="TabButtons",BackgroundColor3=Color3.fromRGB(255, 255, 255),BackgroundTransparency=1,Position=UDim2.new(0, 12, 0, 41),Size=UDim2.new(0, 76, 0, 447)}, ImageLabel);
 	local UIListLayout = library:create("UIListLayout", {HorizontalAlignment=Enum.HorizontalAlignment.Center}, TabButtons);
 	local Tabs = library:create("Frame", {Name="Tabs",BackgroundColor3=Color3.fromRGB(255, 255, 255),BackgroundTransparency=1,Position=UDim2.new(0, 102, 0, 42),Size=UDim2.new(0, 586, 0, 446)}, ImageLabel);
@@ -210,7 +210,7 @@ library.new = function(library_title, cfg_location)
 			local section = {};
 			num_sections += 1
 			menu.values[tab.tab_num][section_name] = {};
-			local SectionButton = library:create("TextButton", {Name="SectionButton",BackgroundTransparency=1,Size=UDim2.new(1 / num_sections, 0, 1, 0),Font=Enum.Font.Ubuntu,Text=section_name,TextColor3=Color3.fromRGB(100, 100, 100),TextSize=15}, TabSections);
+			local SectionButton = library:create("TextButton", {Name="SectionButton",BackgroundTransparency=1,Size=UDim2.new(1 / num_sections, 0, 1, 0),Font=Enum.Font.Arcade,Text=section_name,TextColor3=Color3.fromRGB(100, 100, 100),TextSize=15}, TabSections);
 			for _, SectionButtons in pairs(TabSections:GetChildren()) do
 				if SectionButtons:IsA("UIListLayout") then
 					continue;
@@ -270,7 +270,7 @@ library.new = function(library_title, cfg_location)
 				local Container = library:create("Frame", {BackgroundColor3=Color3.fromRGB(10, 10, 10),BorderSizePixel=0,Position=UDim2.new(0, 1, 0, 1),Size=UDim2.new(1, -2, 1, -2)}, Border);
 				local UIListLayout = library:create("UIListLayout", {HorizontalAlignment=Enum.HorizontalAlignment.Center,SortOrder=Enum.SortOrder.LayoutOrder}, Container);
 				local UIPadding = library:create("UIPadding", {PaddingTop=UDim.new(0, 12)}, Container);
-				local SectorTitle = library:create("TextLabel", {Name="Title",AnchorPoint=Vector2.new(0.5, 0),BackgroundTransparency=1,Position=UDim2.new(0.5, 0, 0, -8),Size=UDim2.new(1, 0, 0, 15),Font=Enum.Font.Ubuntu,Text=sector_name,TextColor3=Color3.fromRGB(255, 255, 255),TextSize=14}, Border);
+				local SectorTitle = library:create("TextLabel", {Name="Title",AnchorPoint=Vector2.new(0.5, 0),BackgroundTransparency=1,Position=UDim2.new(0.5, 0, 0, -8),Size=UDim2.new(1, 0, 0, 15),Font=Enum.Font.Arcade,Text=sector_name,TextColor3=Color3.fromRGB(255, 255, 255),TextSize=14}, Border);
 				sector.create_line = function(thickness)
 					thickness = thickness or 3;
 					Border.Size = Border.Size + UDim2.new(0, 0, 0, thickness * 3);
@@ -316,7 +316,7 @@ library.new = function(library_title, cfg_location)
 						if (dangerous ~= "undefined") then
 							ButtonColor = Color3.fromRGB(255, 0, 0);
 						end
-						local ToggleText = library:create("TextLabel", {BackgroundTransparency=1,Position=UDim2.new(0, 27, 0, 5),Size=UDim2.new(0, 200, 0, 9),Font=Enum.Font.Ubuntu,Text=text,TextColor3=ButtonColor,TextSize=14,TextXAlignment=Enum.TextXAlignment.Left}, ToggleButton);
+						local ToggleText = library:create("TextLabel", {BackgroundTransparency=1,Position=UDim2.new(0, 27, 0, 5),Size=UDim2.new(0, 200, 0, 9),Font=Enum.Font.Arcade,Text=text,TextColor3=ButtonColor,TextSize=14,TextXAlignment=Enum.TextXAlignment.Left}, ToggleButton);
 						local mouse_in = false;
 						element.set_value = function(self, new_value, cb)
 							value = (new_value and new_value) or value;
@@ -363,7 +363,7 @@ library.new = function(library_title, cfg_location)
 							local extra_value = {Key,Type="Hold",Active=false};
 							key_callback = key_callback or function()
 							end;
-							local Keybind = library:create("TextButton", {Name="Keybind",AnchorPoint=Vector2.new(1, 0),BackgroundTransparency=1,Position=UDim2.new(0, 265, 0, 0),Size=UDim2.new(0, 56, 0, 20),Font=Enum.Font.Ubuntu,Text=("[ " .. key_default .. " ]"),TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Right}, ToggleButton);
+							local Keybind = library:create("TextButton", {Name="Keybind",AnchorPoint=Vector2.new(1, 0),BackgroundTransparency=1,Position=UDim2.new(0, 265, 0, 0),Size=UDim2.new(0, 56, 0, 20),Font=Enum.Font.Arcade,Text=("[ " .. key_default .. " ]"),TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Right}, ToggleButton);
 							local KeybindFrame = library:create("Frame", {Name="KeybindFrame",BackgroundColor3=Color3.fromRGB(10, 10, 10),BorderColor3=Color3.fromRGB(30, 30, 30),Position=UDim2.new(1, 5, 0, 3),Size=UDim2.new(0, 55, 0, 75),Visible=false,ZIndex=2}, Keybind);
 							local UIListLayout = library:create("UIListLayout", {HorizontalAlignment=Enum.HorizontalAlignment.Center,SortOrder=Enum.SortOrder.LayoutOrder}, KeybindFrame);
 							local keybind_in = false;
@@ -391,9 +391,9 @@ library.new = function(library_title, cfg_location)
 									end
 								end
 							end);
-							local Always = library:create("TextButton", {Name="Always",BackgroundTransparency=1,Size=UDim2.new(1, 0, 0, 25),Font=Enum.Font.Ubuntu,Text="Always",TextColor3=Color3.fromRGB(84, 101, 255),TextSize=14,ZIndex=2}, KeybindFrame);
-							local Hold = library:create("TextButton", {Name="Hold",BackgroundTransparency=1,Size=UDim2.new(1, 0, 0, 25),Font=Enum.Font.Ubuntu,Text="Hold",TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,ZIndex=2}, KeybindFrame);
-							local Toggle = library:create("TextButton", {Name="Toggle",BackgroundTransparency=1,Size=UDim2.new(1, 0, 0, 25),Font=Enum.Font.Ubuntu,Text="Toggle",TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,ZIndex=2}, KeybindFrame);
+							local Always = library:create("TextButton", {Name="Always",BackgroundTransparency=1,Size=UDim2.new(1, 0, 0, 25),Font=Enum.Font.Arcade,Text="Always",TextColor3=Color3.fromRGB(84, 101, 255),TextSize=14,ZIndex=2}, KeybindFrame);
+							local Hold = library:create("TextButton", {Name="Hold",BackgroundTransparency=1,Size=UDim2.new(1, 0, 0, 25),Font=Enum.Font.Arcade,Text="Hold",TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,ZIndex=2}, KeybindFrame);
+							local Toggle = library:create("TextButton", {Name="Toggle",BackgroundTransparency=1,Size=UDim2.new(1, 0, 0, 25),Font=Enum.Font.Arcade,Text="Toggle",TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,ZIndex=2}, KeybindFrame);
 							for _, TypeButton in next, KeybindFrame:GetChildren() do
 								if TypeButton:IsA("UIListLayout") then
 									continue;
@@ -433,11 +433,11 @@ library.new = function(library_title, cfg_location)
 									is_binding = false;
 									local new_value = ((input.KeyCode.Name ~= "Unknown") and input.KeyCode.Name) or input.UserInputType.Name;
 									Keybind.Text = "[ " .. new_value:upper() .. " ]";
-									Keybind.Size = UDim2.new(0, library:get_text_size(Keybind.Text, 14, Enum.Font.Ubuntu, Vector2.new(700, 20)).X + 3, 0, 20);
+									Keybind.Size = UDim2.new(0, library:get_text_size(Keybind.Text, 14, Enum.Font.Arcade, Vector2.new(700, 20)).X + 3, 0, 20);
 									extra_value.Key = new_value;
 									if (new_value == "Backspace") then
 										Keybind.Text = "[ NONE ]";
-										Keybind.Size = UDim2.new(0, library:get_text_size(Keybind.Text, 14, Enum.Font.Ubuntu, Vector2.new(700, 20)).X + 3, 0, 20);
+										Keybind.Size = UDim2.new(0, library:get_text_size(Keybind.Text, 14, Enum.Font.Arcade, Vector2.new(700, 20)).X + 3, 0, 20);
 										extra_value.Key = nil;
 									end
 									key_callback(extra_value);
@@ -472,7 +472,7 @@ library.new = function(library_title, cfg_location)
 									wait();
 									is_binding = true;
 									Keybind.Text = "[ ... ]";
-									Keybind.Size = UDim2.new(0, library:get_text_size("[ ... ]", 14, Enum.Font.Ubuntu, Vector2.new(700, 20)).X + 3, 0, 20);
+									Keybind.Size = UDim2.new(0, library:get_text_size("[ ... ]", 14, Enum.Font.Arcade, Vector2.new(700, 20)).X + 3, 0, 20);
 								end
 							end);
 							Keybind.MouseButton2Down:Connect(function()
@@ -495,7 +495,7 @@ library.new = function(library_title, cfg_location)
 								end
 								local key = ((extra_value.Key ~= nil) and extra_value.Key) or "NONE";
 								Keybind.Text = "[ " .. key:upper() .. " ]";
-								Keybind.Size = UDim2.new(0, library:get_text_size(Keybind.Text, 14, Enum.Font.Ubuntu, Vector2.new(700, 20)).X + 3, 0, 20);
+								Keybind.Size = UDim2.new(0, library:get_text_size(Keybind.Text, 14, Enum.Font.Arcade, Vector2.new(700, 20)).X + 3, 0, 20);
 								if ((cb == nil) or not cb) then
 									key_callback(extra_value);
 								end
@@ -516,7 +516,7 @@ library.new = function(library_title, cfg_location)
 							local extra_value = {Color};
 							color_callback = color_callback or function()
 							end;
-							local ColorButton = library:create("TextButton", {Name="ColorButton",AnchorPoint=Vector2.new(1, 0.5),BackgroundColor3=Color3.fromRGB(255, 28, 28),BorderColor3=Color3.fromRGB(0, 0, 0),Position=UDim2.new(0, 265, 0.5, 0),Size=UDim2.new(0, 35, 0, 11),AutoButtonColor=false,Font=Enum.Font.Ubuntu,Text="",TextXAlignment=Enum.TextXAlignment.Right}, ToggleButton);
+							local ColorButton = library:create("TextButton", {Name="ColorButton",AnchorPoint=Vector2.new(1, 0.5),BackgroundColor3=Color3.fromRGB(255, 28, 28),BorderColor3=Color3.fromRGB(0, 0, 0),Position=UDim2.new(0, 265, 0.5, 0),Size=UDim2.new(0, 35, 0, 11),AutoButtonColor=false,Font=Enum.Font.Arcade,Text="",TextXAlignment=Enum.TextXAlignment.Right}, ToggleButton);
 							local ColorFrame = library:create("Frame", {Name="ColorFrame",Parent=ColorButton,BackgroundColor3=Color3.fromRGB(10, 10, 10),BorderColor3=Color3.fromRGB(0, 0, 0),Position=UDim2.new(1, 5, 0, 0),Size=UDim2.new(0, 200, 0, 170),Visible=false,ZIndex=2}, ColorButton);
 							local ColorPicker = library:create("ImageButton", {Name="ColorPicker",BackgroundColor3=Color3.fromRGB(255, 255, 255),BorderColor3=Color3.fromRGB(0, 0, 0),Position=UDim2.new(0, 40, 0, 10),Size=UDim2.new(0, 150, 0, 150),AutoButtonColor=false,Image="rbxassetid://4155801252",ImageColor3=Color3.fromRGB(255, 0, 4),ZIndex=2}, ColorFrame);
 							local ColorPick = library:create("Frame", {Name="ColorPick",BackgroundColor3=Color3.fromRGB(255, 255, 255),BorderColor3=Color3.fromRGB(0, 0, 0),Size=UDim2.new(0, 1, 0, 1),ZIndex=2}, ColorPicker);
@@ -682,9 +682,9 @@ library.new = function(library_title, cfg_location)
 							end
 						end;
 						local DropdownButton = library:create("TextButton", {Name="DropdownButton",BackgroundColor3=Color3.fromRGB(25, 25, 25),BorderColor3=Color3.fromRGB(0, 0, 0),Position=UDim2.new(0, 9, 0, 20),Size=UDim2.new(0, 260, 0, 20),AutoButtonColor=false,Text=""}, Dropdown);
-						local DropdownButtonText = library:create("TextLabel", {Name="DropdownButtonText",BackgroundTransparency=1,Position=UDim2.new(0, 6, 0, 0),Size=UDim2.new(0, 250, 1, 0),Font=Enum.Font.Ubuntu,Text=value.Dropdown,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left}, DropdownButton);
+						local DropdownButtonText = library:create("TextLabel", {Name="DropdownButtonText",BackgroundTransparency=1,Position=UDim2.new(0, 6, 0, 0),Size=UDim2.new(0, 250, 1, 0),Font=Enum.Font.Arcade,Text=value.Dropdown,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left}, DropdownButton);
 						local ImageLabel = library:create("ImageLabel", {BackgroundTransparency=1,Position=UDim2.new(0, 245, 0, 8),Size=UDim2.new(0, 6, 0, 4),Image="rbxassetid://6724771531"}, DropdownButton);
-						local DropdownText = library:create("TextLabel", {Name="DropdownText",BackgroundTransparency=1,Position=UDim2.new(0, 9, 0, 6),Size=UDim2.new(0, 200, 0, 9),Font=Enum.Font.Ubuntu,Text=text,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left}, Dropdown);
+						local DropdownText = library:create("TextLabel", {Name="DropdownText",BackgroundTransparency=1,Position=UDim2.new(0, 9, 0, 6),Size=UDim2.new(0, 200, 0, 9),Font=Enum.Font.Arcade,Text=text,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left}, Dropdown);
 						local DropdownScroll = library:create("ScrollingFrame", {Name="DropdownScroll",Active=true,BackgroundColor3=Color3.fromRGB(25, 25, 25),BorderColor3=Color3.fromRGB(0, 0, 0),Position=UDim2.new(0, 9, 0, 41),Size=UDim2.new(0, 260, 0, 20),CanvasSize=UDim2.new(0, 0, 0, 0),ScrollBarThickness=4,TopImage="rbxasset://textures/ui/Scroll/scroll-middle.png",BottomImage="rbxasset://textures/ui/Scroll/scroll-middle.png",Visible=false,ZIndex=2}, Dropdown);
 						local UIListLayout = library:create("UIListLayout", {HorizontalAlignment=Enum.HorizontalAlignment.Center,SortOrder=Enum.SortOrder.LayoutOrder}, DropdownScroll);
 						local options_num = #data.options;
@@ -751,7 +751,7 @@ library.new = function(library_title, cfg_location)
 							local dropdown_is_first = true;
 							for _, v in next, data.options do
 								local Button = library:create("TextButton", {Name=v,BackgroundColor3=Color3.fromRGB(25, 25, 25),BorderColor3=Color3.fromRGB(0, 0, 0),BorderSizePixel=0,Position=UDim2.new(0, 0, 0, 20),Size=UDim2.new(1, 0, 0, 20),AutoButtonColor=false,Font=Enum.Font.SourceSans,Text="",ZIndex=2}, DropdownScroll);
-								local ButtonText = library:create("TextLabel", {Name="ButtonText",BackgroundTransparency=1,Position=UDim2.new(0, 8, 0, 0),Size=UDim2.new(0, 245, 1, 0),Font=Enum.Font.Ubuntu,Text=v,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=2}, Button);
+								local ButtonText = library:create("TextLabel", {Name="ButtonText",BackgroundTransparency=1,Position=UDim2.new(0, 8, 0, 0),Size=UDim2.new(0, 245, 1, 0),Font=Enum.Font.Arcade,Text=v,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=2}, Button);
 								local Decoration = library:create("Frame", {Name="Decoration",BackgroundColor3=Color3.fromRGB(84, 101, 255),BorderSizePixel=0,Size=UDim2.new(0, 1, 1, 0),Visible=false,ZIndex=2}, Button);
 								Button.MouseEnter:Connect(function()
 									library:tween(ButtonText, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextColor3=Color3.fromRGB(255, 255, 255)});
@@ -776,7 +776,7 @@ library.new = function(library_title, cfg_location)
 						local dropdown_is_first = true;
 						for _, v in next, data.options do
 							local Button = library:create("TextButton", {Name=v,BackgroundColor3=Color3.fromRGB(25, 25, 25),BorderColor3=Color3.fromRGB(0, 0, 0),BorderSizePixel=0,Position=UDim2.new(0, 0, 0, 20),Size=UDim2.new(1, 0, 0, 20),AutoButtonColor=false,Font=Enum.Font.SourceSans,Text="",ZIndex=2}, DropdownScroll);
-							local ButtonText = library:create("TextLabel", {Name="ButtonText",BackgroundTransparency=1,Position=UDim2.new(0, 8, 0, 0),Size=UDim2.new(0, 245, 1, 0),Font=Enum.Font.Ubuntu,Text=v,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=2}, Button);
+							local ButtonText = library:create("TextLabel", {Name="ButtonText",BackgroundTransparency=1,Position=UDim2.new(0, 8, 0, 0),Size=UDim2.new(0, 245, 1, 0),Font=Enum.Font.Arcade,Text=v,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=2}, Button);
 							local Decoration = library:create("Frame", {Name="Decoration",BackgroundColor3=Color3.fromRGB(84, 101, 255),BorderSizePixel=0,Size=UDim2.new(0, 1, 1, 0),Visible=false,ZIndex=2}, Button);
 							Button.MouseEnter:Connect(function()
 								library:tween(ButtonText, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextColor3=Color3.fromRGB(255, 255, 255)});
@@ -819,9 +819,9 @@ library.new = function(library_title, cfg_location)
 							end
 						end;
 						local DropdownButton = library:create("TextButton", {Name="DropdownButton",BackgroundColor3=Color3.fromRGB(25, 25, 25),BorderColor3=Color3.fromRGB(0, 0, 0),Position=UDim2.new(0, 9, 0, 20),Size=UDim2.new(0, 260, 0, 20),AutoButtonColor=false,Text=""}, Dropdown);
-						local DropdownButtonText = library:create("TextLabel", {Name="DropdownButtonText",BackgroundTransparency=1,Position=UDim2.new(0, 6, 0, 0),Size=UDim2.new(0, 250, 1, 0),Font=Enum.Font.Ubuntu,Text=value.Dropdown,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left}, DropdownButton);
+						local DropdownButtonText = library:create("TextLabel", {Name="DropdownButtonText",BackgroundTransparency=1,Position=UDim2.new(0, 6, 0, 0),Size=UDim2.new(0, 250, 1, 0),Font=Enum.Font.Arcade,Text=value.Dropdown,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left}, DropdownButton);
 						local ImageLabel = library:create("ImageLabel", {BackgroundTransparency=1,Position=UDim2.new(0, 245, 0, 8),Size=UDim2.new(0, 6, 0, 4),Image="rbxassetid://6724771531"}, DropdownButton);
-						local DropdownText = library:create("TextLabel", {Name="DropdownText",BackgroundTransparency=1,Position=UDim2.new(0, 9, 0, 6),Size=UDim2.new(0, 200, 0, 9),Font=Enum.Font.Ubuntu,Text=text,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left}, Dropdown);
+						local DropdownText = library:create("TextLabel", {Name="DropdownText",BackgroundTransparency=1,Position=UDim2.new(0, 9, 0, 6),Size=UDim2.new(0, 200, 0, 9),Font=Enum.Font.Arcade,Text=text,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left}, Dropdown);
 						local DropdownScroll = library:create("ScrollingFrame", {Name="DropdownScroll",Active=true,BackgroundColor3=Color3.fromRGB(25, 25, 25),BorderColor3=Color3.fromRGB(0, 0, 0),Position=UDim2.new(0, 9, 0, 41),Size=UDim2.new(0, 260, 0, 20),CanvasSize=UDim2.new(0, 0, 0, 0),ScrollBarThickness=4,TopImage="rbxasset://textures/ui/Scroll/scroll-middle.png",BottomImage="rbxasset://textures/ui/Scroll/scroll-middle.png",Visible=false,ZIndex=2}, Dropdown);
 						local UIListLayout = library:create("UIListLayout", {HorizontalAlignment=Enum.HorizontalAlignment.Center,SortOrder=Enum.SortOrder.LayoutOrder}, DropdownScroll);
 						local options_num = #data.options;
@@ -920,7 +920,7 @@ library.new = function(library_title, cfg_location)
 						local dropdown_is_first = true;
 						for _, v in next, data.options do
 							local Button = library:create("TextButton", {Name=v,BackgroundColor3=Color3.fromRGB(25, 25, 25),BorderColor3=Color3.fromRGB(0, 0, 0),BorderSizePixel=0,Position=UDim2.new(0, 0, 0, 20),Size=UDim2.new(1, 0, 0, 20),AutoButtonColor=false,Font=Enum.Font.SourceSans,Text="",ZIndex=2}, DropdownScroll);
-							local ButtonText = library:create("TextLabel", {Name="ButtonText",BackgroundTransparency=1,Position=UDim2.new(0, 8, 0, 0),Size=UDim2.new(0, 245, 1, 0),Font=Enum.Font.Ubuntu,Text=v,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=2}, Button);
+							local ButtonText = library:create("TextLabel", {Name="ButtonText",BackgroundTransparency=1,Position=UDim2.new(0, 8, 0, 0),Size=UDim2.new(0, 245, 1, 0),Font=Enum.Font.Arcade,Text=v,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=2}, Button);
 							local Decoration = library:create("Frame", {Name="Decoration",BackgroundColor3=Color3.fromRGB(84, 101, 255),BorderSizePixel=0,Size=UDim2.new(0, 1, 1, 0),Visible=false,ZIndex=2}, Button);
 							local mouse_in = false;
 							Button.MouseEnter:Connect(function()
@@ -956,7 +956,7 @@ library.new = function(library_title, cfg_location)
 					elseif (type == "Button") then
 						Border.Size = Border.Size + UDim2.new(0, 0, 0, 30);
 						local ButtonFrame = library:create("Frame", {Name="ButtonFrame",BackgroundTransparency=1,Position=UDim2.new(0, 0, 0, 0),Size=UDim2.new(1, 0, 0, 30)}, Container);
-						local Button = library:create("TextButton", {Name="Button",AnchorPoint=Vector2.new(0.5, 0.5),BackgroundColor3=Color3.fromRGB(25, 25, 25),BorderColor3=Color3.fromRGB(0, 0, 0),Position=UDim2.new(0.5, 0, 0.5, 0),Size=UDim2.new(0, 215, 0, 20),AutoButtonColor=false,Font=Enum.Font.Ubuntu,Text=text,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14}, ButtonFrame);
+						local Button = library:create("TextButton", {Name="Button",AnchorPoint=Vector2.new(0.5, 0.5),BackgroundColor3=Color3.fromRGB(25, 25, 25),BorderColor3=Color3.fromRGB(0, 0, 0),Position=UDim2.new(0.5, 0, 0.5, 0),Size=UDim2.new(0, 215, 0, 20),AutoButtonColor=false,Font=Enum.Font.Arcade,Text=text,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14}, ButtonFrame);
 						Button.MouseEnter:Connect(function()
 							library:tween(Button, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextColor3=Color3.fromRGB(255, 255, 255)});
 						end);
@@ -987,7 +987,7 @@ library.new = function(library_title, cfg_location)
 								ButtonFrame.Visible = false;
 							end
 						end;
-						local TextBox = library:create("TextBox", {Name="Button",AnchorPoint=Vector2.new(0.5, 0.5),BackgroundColor3=Color3.fromRGB(25, 25, 25),BorderColor3=Color3.fromRGB(0, 0, 0),Position=UDim2.new(0.5, 0, 0.5, 0),Size=UDim2.new(0, 215, 0, 20),Font=Enum.Font.Ubuntu,Text=text,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,PlaceholderText=text,ClearTextOnFocus=false}, ButtonFrame);
+						local TextBox = library:create("TextBox", {Name="Button",AnchorPoint=Vector2.new(0.5, 0.5),BackgroundColor3=Color3.fromRGB(25, 25, 25),BorderColor3=Color3.fromRGB(0, 0, 0),Position=UDim2.new(0.5, 0, 0.5, 0),Size=UDim2.new(0, 215, 0, 20),Font=Enum.Font.Arcade,Text=text,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,PlaceholderText=text,ClearTextOnFocus=false}, ButtonFrame);
 						TextBox.MouseEnter:Connect(function()
 							library:tween(TextBox, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextColor3=Color3.fromRGB(255, 255, 255)});
 						end);
@@ -1050,7 +1050,7 @@ library.new = function(library_title, cfg_location)
 						local scroll_is_first = true;
 						for _, v in next, data.options do
 							local Button = library:create("TextButton", {Name=v,BackgroundColor3=Color3.fromRGB(25, 25, 25),BorderColor3=Color3.fromRGB(0, 0, 0),BorderSizePixel=0,Position=UDim2.new(0, 0, 0, 20),Size=UDim2.new(1, 0, 0, 20),AutoButtonColor=false,Font=Enum.Font.SourceSans,Text="",TextColor3=Color3.fromRGB(0, 0, 0),TextSize=14}, ScrollFrame);
-							local ButtonText = library:create("TextLabel", {Name="ButtonText",BackgroundColor3=Color3.fromRGB(255, 255, 255),BackgroundTransparency=1,Position=UDim2.new(0, 7, 0, 0),Size=UDim2.new(0, 210, 1, 0),Font=Enum.Font.Ubuntu,Text=v,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left}, Button);
+							local ButtonText = library:create("TextLabel", {Name="ButtonText",BackgroundColor3=Color3.fromRGB(255, 255, 255),BackgroundTransparency=1,Position=UDim2.new(0, 7, 0, 0),Size=UDim2.new(0, 210, 1, 0),Font=Enum.Font.Arcade,Text=v,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left}, Button);
 							local Decoration = library:create("Frame", {Name="Decoration",Parent=Button,BackgroundColor3=Color3.fromRGB(84, 101, 255),BorderSizePixel=0,Size=UDim2.new(0, 1, 1, 0),Visible=false}, Button);
 							local mouse_in = false;
 							Button.MouseEnter:Connect(function()
@@ -1091,7 +1091,7 @@ library.new = function(library_title, cfg_location)
 							end
 							ScrollFrame.CanvasSize = ScrollFrame.CanvasSize + UDim2.new(0, 0, 0, 20);
 							local Button = library:create("TextButton", {Name=v,BackgroundColor3=Color3.fromRGB(25, 25, 25),BorderColor3=Color3.fromRGB(0, 0, 0),BorderSizePixel=0,Position=UDim2.new(0, 0, 0, 20),Size=UDim2.new(1, 0, 0, 20),AutoButtonColor=false,Font=Enum.Font.SourceSans,Text="",TextColor3=Color3.fromRGB(0, 0, 0),TextSize=14}, ScrollFrame);
-							local ButtonText = library:create("TextLabel", {Name="ButtonText",BackgroundColor3=Color3.fromRGB(255, 255, 255),BackgroundTransparency=1,Position=UDim2.new(0, 7, 0, 0),Size=UDim2.new(0, 210, 1, 0),Font=Enum.Font.Ubuntu,Text=v,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left}, Button);
+							local ButtonText = library:create("TextLabel", {Name="ButtonText",BackgroundColor3=Color3.fromRGB(255, 255, 255),BackgroundTransparency=1,Position=UDim2.new(0, 7, 0, 0),Size=UDim2.new(0, 210, 1, 0),Font=Enum.Font.Arcade,Text=v,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left}, Button);
 							local Decoration = library:create("Frame", {Name="Decoration",Parent=Button,BackgroundColor3=Color3.fromRGB(84, 101, 255),BorderSizePixel=0,Size=UDim2.new(0, 1, 1, 0),Visible=false}, Button);
 							local mouse_in = false;
 							Button.MouseEnter:Connect(function()
@@ -1162,11 +1162,11 @@ library.new = function(library_title, cfg_location)
 								Slider.Visible = false;
 							end
 						end;
-						local SliderText = library:create("TextLabel", {Name="SliderText",BackgroundTransparency=1,Position=UDim2.new(0, 9, 0, 6),Size=UDim2.new(0, 200, 0, 9),Font=Enum.Font.Ubuntu,Text=text,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left}, Slider);
+						local SliderText = library:create("TextLabel", {Name="SliderText",BackgroundTransparency=1,Position=UDim2.new(0, 9, 0, 6),Size=UDim2.new(0, 200, 0, 9),Font=Enum.Font.Arcade,Text=text,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Left}, Slider);
 						local SliderButton = library:create("TextButton", {Name="SliderButton",BackgroundColor3=Color3.fromRGB(25, 25, 25),BorderColor3=Color3.fromRGB(0, 0, 0),Position=UDim2.new(0, 9, 0, 20),Size=UDim2.new(0, 260, 0, 10),AutoButtonColor=false,Font=Enum.Font.SourceSans,Text=""}, Slider);
 						local SliderFrame = library:create("Frame", {Name="SliderFrame",BackgroundColor3=Color3.fromRGB(255, 255, 255),BorderSizePixel=0,Size=UDim2.new(0, 100, 1, 0)}, SliderButton);
 						local UIGradient = library:create("UIGradient", {Color=ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.fromRGB(79, 95, 239)),ColorSequenceKeypoint.new(1, Color3.fromRGB(56, 67, 163))}),Rotation=90}, SliderFrame);
-						local SliderValue = library:create("TextLabel", {Name="SliderValue",BackgroundTransparency=1,Position=UDim2.new(0, 69, 0, 6),Size=UDim2.new(0, 200, 0, 9),Font=Enum.Font.Ubuntu,Text=value.Slider,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Right}, Slider);
+						local SliderValue = library:create("TextLabel", {Name="SliderValue",BackgroundTransparency=1,Position=UDim2.new(0, 69, 0, 6),Size=UDim2.new(0, 200, 0, 9),Font=Enum.Font.Arcade,Text=value.Slider,TextColor3=Color3.fromRGB(150, 150, 150),TextSize=14,TextXAlignment=Enum.TextXAlignment.Right}, Slider);
 						local is_sliding = false;
 						local mouse_in = false;
 						Slider.MouseEnter:Connect(function()
