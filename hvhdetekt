@@ -1,0 +1,78 @@
+--====================================================
+-- HvH Cheater Detector 2.0
+-- Constantly checks, never misses, no spam
+--====================================================
+
+local Players = game:GetService("Players")
+local StarterGui = game:GetService("StarterGui")
+
+-- !! ONLY EDIT THIS TABLE !!
+local FLAGGED_PLAYERS = {
+	"Andonixxu",
+	"Pr012yt1",
+	"OSANUNCASERINDE",
+	"StarryBuild3rRift",
+	"SPICKENDER2",
+	""
+}
+
+-- internal tracking so we don't spam while they're IN the server
+local notifiedCurrently = {}
+
+local function isFlagged(name)
+	name = string.lower(name)
+	for _,v in ipairs(FLAGGED_PLAYERS) do
+		if string.lower(v) == name then
+			return true
+		end
+	end
+	return false
+end
+
+local function notify(name)
+	StarterGui:SetCore("SendNotification",{
+		Title = "⚠️ HvH inbound!",
+		Text  = "Player: "..name.." is a confirmed Cheater!",
+		Duration = 7
+	})
+end
+
+local function handlePlayer(player)
+	if not player then return end
+	
+	if isFlagged(player.Name) then
+		if not notifiedCurrently[player.UserId] then
+			notifiedCurrently[player.UserId] = true
+			notify(player.Name)
+		end
+	end
+end
+
+-- ========= Detect players already in-game =========
+for _,plr in ipairs(Players:GetPlayers()) do
+	handlePlayer(plr)
+end
+
+-- ========= Detect NEW joins (ALWAYS notify) =========
+Players.PlayerAdded:Connect(function(player)
+	task.wait(0.1)
+	if isFlagged(player.Name) then
+		notifiedCurrently[player.UserId] = true
+		notify(player.Name)
+	end
+end)
+
+-- ========= Reset when players leave =========
+Players.PlayerRemoving:Connect(function(player)
+	if notifiedCurrently[player.UserId] then
+		notifiedCurrently[player.UserId] = nil
+	end
+end)
+
+-- ========= Safety loop (ensures NEVER missed) =========
+while true do
+	for _,plr in ipairs(Players:GetPlayers()) do
+		handlePlayer(plr)
+	end
+	task.wait(1.5)
+end
