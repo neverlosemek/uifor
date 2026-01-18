@@ -1,3 +1,8 @@
+--====================================================
+-- CONTAINER INSPECTOR ESP (OPTIMIZED / NO LAG)
+-- /e conesp = Only containers with IMPORTANT items
+-- /e debug  = Show ALL containers + full inventory
+--====================================================
 
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -5,13 +10,15 @@ local Workspace = game:GetService("Workspace")
 
 local Player = Players.LocalPlayer
 
-
+-- New chat support
 local TextChatService
 pcall(function()
 	TextChatService = game:GetService("TextChatService")
 end)
 
-
+----------------------------------------------------
+-- SETTINGS
+----------------------------------------------------
 
 local IMPORTANT_ITEMS = {
 	FlareGun = true,
@@ -22,27 +29,25 @@ local IMPORTANT_ITEMS = {
 local BASE_TEXT_SIZE = 12
 local MAX_DISTANCE = 1200
 
+-- Performance tuning
+local SCAN_INTERVAL = 0.75 -- seconds between inventory scans
+local BOUNDS_UPDATE_INTERVAL = 0.15 -- seconds between bounding box recalcs
 
+----------------------------------------------------
+-- STATE
+----------------------------------------------------
 
 local conESPEnabled = false
 local debugEnabled = false
 
+-- key = model, value = { billboard, attach, part, lastText, lastBoundsTime }
+local espMap = {}
 
-local espObjects = {}
+local lastScanTime = 0
 
-
-
-local function clearESP()
-	for _,obj in ipairs(espObjects) do
-		if obj.billboard and obj.billboard.Parent then
-			obj.billboard:Destroy()
-		end
-		if obj.attach and obj.attach.Parent then
-			obj.attach:Destroy()
-		end
-	end
-	table.clear(espObjects)
-end
+----------------------------------------------------
+-- UTILITY
+----------------------------------------------------
 
 local function getAnyPart(model)
 	if model.PrimaryPart and model.PrimaryPart:IsA("BasePart") then
@@ -56,49 +61,83 @@ local function getAnyPart(model)
 	return nil
 end
 
-
-
-local function createTag(model, part, lines, hasImportant)
-	-- Create world-space anchor
-	local attach = Instance.new("Attachment")
-	attach.Name = "ESPAnchor"
-	attach.Parent = part
-
-	local billboard = Instance.new("BillboardGui")
-	billboard.Name = "ContainerESP"
-	billboard.Size = UDim2.new(0, 180, 0, 18 + (#lines * 14))
-	billboard.StudsOffset = Vector3.zero
-	billboard.AlwaysOnTop = true
-	billboard.MaxDistance = MAX_DISTANCE
-	billboard.Adornee = attach
-
-	local label = Instance.new("TextLabel")
-	label.Size = UDim2.new(1, 0, 1, 0)
-	label.BackgroundTransparency = 1
-	label.TextWrapped = true
-	label.TextXAlignment = Enum.TextXAlignment.Left
-	label.TextYAlignment = Enum.TextYAlignment.Top
-	label.TextStrokeTransparency = 0.25
-	label.Font = Enum.Font.GothamBold
-	label.TextSize = BASE_TEXT_SIZE
-	label.TextColor3 = hasImportant
-		and Color3.fromRGB(255, 120, 120)
-		or Color3.fromRGB(220, 220, 220)
-
-	label.Text = table.concat(lines, "\n")
-	label.Parent = billboard
-
-	billboard.Parent = part
-
-	table.insert(espObjects, {
-		billboard = billboard,
-		attach = attach,
-		model = model,
-		part = part
-	})
+local function clearESP()
+	for _,obj in pairs(espMap) do
+		if obj.billboard and obj.billboard.Parent then
+			obj.billboard:Destroy()
+		end
+		if obj.attach and obj.attach.Parent then
+			obj.attach:Destroy()
+		end
+	end
+	table.clear(espMap)
 end
 
+----------------------------------------------------
+-- BILLBOARD CREATION
+----------------------------------------------------
 
+local function createOrUpdateTag(model, part, text, hasImportant)
+	local obj = espMap[model]
+
+	if not obj then
+		local attach = Instance.new("Attachment")
+		attach.Name = "ESPAnchor"
+		attach.Parent = part
+
+		local billboard = Instance.new("BillboardGui")
+		billboard.Name = "ContainerESP"
+		billboard.Size = UDim2.new(0, 180, 0, 18 + (#string.split(text, "\n") * 14))
+		billboard.StudsOffset = Vector3.zero
+		billboard.AlwaysOnTop = true
+		billboard.MaxDistance = MAX_DISTANCE
+		billboard.Adornee = attach
+
+		local label = Instance.new("TextLabel")
+		label.Name = "Label"
+		label.Size = UDim2.new(1, 0, 1, 0)
+		label.BackgroundTransparency = 1
+		label.TextWrapped = true
+		label.TextXAlignment = Enum.TextXAlignment.Left
+		label.TextYAlignment = Enum.TextYAlignment.Top
+		label.TextStrokeTransparency = 0.25
+		label.Font = Enum.Font.GothamBold
+		label.TextSize = BASE_TEXT_SIZE
+		label.Parent = billboard
+
+		billboard.Parent = part
+
+		obj = {
+			billboard = billboard,
+			label = label,
+			attach = attach,
+			part = part,
+			lastText = "",
+			lastBoundsTime = 0
+		}
+
+		espMap[model] = obj
+	end
+
+	-- Only update visuals if text changed
+	if obj.lastText ~= text then
+		obj.label.Text = text
+		obj.label.TextColor3 = hasImportant
+			and Color3.fromRGB(255, 120, 120)
+			or Color3.fromRGB(220, 220, 220)
+
+		obj.billboard.Size = UDim2.new(
+			0, 180,
+			0, 18 + (#string.split(text, "\n") * 14)
+		)
+
+		obj.lastText = text
+	end
+end
+
+----------------------------------------------------
+-- INVENTORY READER
+----------------------------------------------------
 
 local function readInventory(inv)
 	local results = {}
@@ -114,7 +153,9 @@ local function readInventory(inv)
 	return results
 end
 
-
+----------------------------------------------------
+-- RECURSIVE FIND
+----------------------------------------------------
 
 local function collectInventoryModels(root, out)
 	for _,child in ipairs(root:GetChildren()) do
@@ -129,24 +170,25 @@ local function collectInventoryModels(root, out)
 	end
 end
 
-
+----------------------------------------------------
+-- CORE SCAN (SLOW LOOP)
+----------------------------------------------------
 
 local function scanContainers(showAll)
-	clearESP()
-
 	local containersFolder = Workspace:FindFirstChild("Containers")
 	if not containersFolder then return end
 
 	local foundModels = {}
 	collectInventoryModels(containersFolder, foundModels)
 
+	local alive = {}
+
 	for _,container in ipairs(foundModels) do
 		local inv = container:FindFirstChild("Inventory")
-		if not inv then continue end
+		local part = getAnyPart(container)
+		if not (inv and part) then continue end
 
 		local items = readInventory(inv)
-		local part = getAnyPart(container)
-		if not part then continue end
 
 		local importantList = {}
 		local normalList = {}
@@ -160,12 +202,20 @@ local function scanContainers(showAll)
 		end
 
 		if not showAll and #importantList == 0 then
+			-- remove ESP if it exists
+			if espMap[container] then
+				if espMap[container].billboard then
+					espMap[container].billboard:Destroy()
+				end
+				if espMap[container].attach then
+					espMap[container].attach:Destroy()
+				end
+				espMap[container] = nil
+			end
 			continue
 		end
 
 		local lines = {}
-		local hasImportant = #importantList > 0
-
 		table.insert(lines, "📦 " .. container.Name)
 
 		for _,name in ipairs(importantList) do
@@ -181,22 +231,43 @@ local function scanContainers(showAll)
 			end
 		end
 
-		createTag(container, part, lines, hasImportant)
+		local text = table.concat(lines, "\n")
+
+		createOrUpdateTag(container, part, text, #importantList > 0)
+		alive[container] = true
+	end
+
+	-- Cleanup ESPs for containers that no longer exist
+	for model,obj in pairs(espMap) do
+		if not alive[model] then
+			if obj.billboard then obj.billboard:Destroy() end
+			if obj.attach then obj.attach:Destroy() end
+			espMap[model] = nil
+		end
 	end
 end
 
+----------------------------------------------------
+-- WORLD-SPACE UPDATE LOOP (FAST)
+----------------------------------------------------
 
 RunService.RenderStepped:Connect(function()
-	for _,obj in ipairs(espObjects) do
-		if obj.model and obj.model.Parent and obj.attach and obj.part then
-			local cf, size = obj.model:GetBoundingBox()
-			local worldPos = cf.Position + Vector3.new(0, size.Y / 2 + 0.6, 0)
-
-			obj.attach.WorldPosition = worldPos
+	local now = os.clock()
+	for model,obj in pairs(espMap) do
+		if model.Parent and obj.attach and obj.part then
+			if now - obj.lastBoundsTime >= BOUNDS_UPDATE_INTERVAL then
+				local cf, size = model:GetBoundingBox()
+				obj.attach.WorldPosition =
+					cf.Position + Vector3.new(0, size.Y / 2 + 0.6, 0)
+				obj.lastBoundsTime = now
+			end
 		end
 	end
 end)
 
+----------------------------------------------------
+-- COMMAND HANDLER
+----------------------------------------------------
 
 local function handleCommand(raw)
 	if not raw then return end
@@ -237,8 +308,15 @@ if TextChatService and TextChatService.MessageReceived then
 	end)
 end
 
+----------------------------------------------------
+-- SLOW SCAN LOOP
+----------------------------------------------------
 
 RunService.Heartbeat:Connect(function()
+	local now = os.clock()
+	if now - lastScanTime < SCAN_INTERVAL then return end
+	lastScanTime = now
+
 	if debugEnabled then
 		scanContainers(true)
 	elseif conESPEnabled then
