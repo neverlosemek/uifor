@@ -1,0 +1,249 @@
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local Workspace = game:GetService("Workspace")
+
+local Player = Players.LocalPlayer
+
+
+local TextChatService
+pcall(function()
+	TextChatService = game:GetService("TextChatService")
+end)
+
+
+
+local IMPORTANT_ITEMS = {
+	FlareGun = true,
+	AsVal = true,
+	AI4 = true
+}
+
+local BASE_TEXT_SIZE = 12
+local MAX_DISTANCE = 1200
+
+
+
+local conESPEnabled = false
+local debugEnabled = false
+
+
+local espObjects = {}
+
+
+
+local function clearESP()
+	for _,obj in ipairs(espObjects) do
+		if obj.billboard and obj.billboard.Parent then
+			obj.billboard:Destroy()
+		end
+		if obj.attach and obj.attach.Parent then
+			obj.attach:Destroy()
+		end
+	end
+	table.clear(espObjects)
+end
+
+local function getAnyPart(model)
+	if model.PrimaryPart and model.PrimaryPart:IsA("BasePart") then
+		return model.PrimaryPart
+	end
+	for _,d in ipairs(model:GetDescendants()) do
+		if d:IsA("BasePart") then
+			return d
+		end
+	end
+	return nil
+end
+
+
+
+local function createTag(model, part, lines, hasImportant)
+	-- Create world-space anchor
+	local attach = Instance.new("Attachment")
+	attach.Name = "ESPAnchor"
+	attach.Parent = part
+
+	local billboard = Instance.new("BillboardGui")
+	billboard.Name = "ContainerESP"
+	billboard.Size = UDim2.new(0, 180, 0, 18 + (#lines * 14))
+	billboard.StudsOffset = Vector3.zero
+	billboard.AlwaysOnTop = true
+	billboard.MaxDistance = MAX_DISTANCE
+	billboard.Adornee = attach
+
+	local label = Instance.new("TextLabel")
+	label.Size = UDim2.new(1, 0, 1, 0)
+	label.BackgroundTransparency = 1
+	label.TextWrapped = true
+	label.TextXAlignment = Enum.TextXAlignment.Left
+	label.TextYAlignment = Enum.TextYAlignment.Top
+	label.TextStrokeTransparency = 0.25
+	label.Font = Enum.Font.GothamBold
+	label.TextSize = BASE_TEXT_SIZE
+	label.TextColor3 = hasImportant
+		and Color3.fromRGB(255, 120, 120)
+		or Color3.fromRGB(220, 220, 220)
+
+	label.Text = table.concat(lines, "\n")
+	label.Parent = billboard
+
+	billboard.Parent = part
+
+	table.insert(espObjects, {
+		billboard = billboard,
+		attach = attach,
+		model = model,
+		part = part
+	})
+end
+
+
+
+local function readInventory(inv)
+	local results = {}
+
+	for name, _ in pairs(inv:GetAttributes()) do
+		table.insert(results, name)
+	end
+
+	for _,child in ipairs(inv:GetChildren()) do
+		table.insert(results, child.Name)
+	end
+
+	return results
+end
+
+
+
+local function collectInventoryModels(root, out)
+	for _,child in ipairs(root:GetChildren()) do
+		if child:IsA("Model") then
+			if child:FindFirstChild("Inventory") then
+				table.insert(out, child)
+			end
+			collectInventoryModels(child, out)
+		elseif child:IsA("Folder") then
+			collectInventoryModels(child, out)
+		end
+	end
+end
+
+
+
+local function scanContainers(showAll)
+	clearESP()
+
+	local containersFolder = Workspace:FindFirstChild("Containers")
+	if not containersFolder then return end
+
+	local foundModels = {}
+	collectInventoryModels(containersFolder, foundModels)
+
+	for _,container in ipairs(foundModels) do
+		local inv = container:FindFirstChild("Inventory")
+		if not inv then continue end
+
+		local items = readInventory(inv)
+		local part = getAnyPart(container)
+		if not part then continue end
+
+		local importantList = {}
+		local normalList = {}
+
+		for _,name in ipairs(items) do
+			if IMPORTANT_ITEMS[name] then
+				table.insert(importantList, name)
+			else
+				table.insert(normalList, name)
+			end
+		end
+
+		if not showAll and #importantList == 0 then
+			continue
+		end
+
+		local lines = {}
+		local hasImportant = #importantList > 0
+
+		table.insert(lines, "📦 " .. container.Name)
+
+		for _,name in ipairs(importantList) do
+			table.insert(lines, "⭐ " .. name)
+		end
+
+		if showAll then
+			for _,name in ipairs(normalList) do
+				table.insert(lines, "• " .. name)
+			end
+			if #items == 0 then
+				table.insert(lines, "• (Empty)")
+			end
+		end
+
+		createTag(container, part, lines, hasImportant)
+	end
+end
+
+
+RunService.RenderStepped:Connect(function()
+	for _,obj in ipairs(espObjects) do
+		if obj.model and obj.model.Parent and obj.attach and obj.part then
+			local cf, size = obj.model:GetBoundingBox()
+			local worldPos = cf.Position + Vector3.new(0, size.Y / 2 + 0.6, 0)
+
+			obj.attach.WorldPosition = worldPos
+		end
+	end
+end)
+
+
+local function handleCommand(raw)
+	if not raw then return end
+	local msg = string.lower(raw)
+
+	if msg == "/e conesp" or msg == "conesp" then
+		debugEnabled = false
+		conESPEnabled = not conESPEnabled
+
+		if conESPEnabled then
+			print("[CONESP] Enabled")
+		else
+			print("[CONESP] Disabled")
+			clearESP()
+		end
+	end
+
+	if msg == "/e debug" or msg == "debug" then
+		conESPEnabled = false
+		debugEnabled = not debugEnabled
+
+		if debugEnabled then
+			print("[DEBUG ESP] Enabled")
+		else
+			print("[DEBUG ESP] Disabled")
+			clearESP()
+		end
+	end
+end
+
+Player.Chatted:Connect(handleCommand)
+
+if TextChatService and TextChatService.MessageReceived then
+	TextChatService.MessageReceived:Connect(function(msg)
+		if msg.TextSource and msg.TextSource.UserId == Player.UserId then
+			handleCommand(msg.Text)
+		end
+	end)
+end
+
+
+RunService.Heartbeat:Connect(function()
+	if debugEnabled then
+		scanContainers(true)
+	elseif conESPEnabled then
+		scanContainers(false)
+	end
+end)
+
+print("[CONTAINER ESP] Loaded | /e conesp | /e debug")
