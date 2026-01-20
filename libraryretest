@@ -1,0 +1,767 @@
+--====================================================
+-- POLISHED UI LIBRARY (FULL)
+-- SAME API / FUNCTIONALITY AS ORIGINAL
+-- VISUAL UPGRADE ONLY
+-- DROP-IN REPLACEMENT
+--====================================================
+
+local library = {}
+
+--====================================================
+-- SERVICES
+--====================================================
+
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+local HttpService = game:GetService("HttpService")
+local TextService = game:GetService("TextService")
+local RunService = game:GetService("RunService")
+
+local local_player = Players.LocalPlayer
+local mouse = local_player:GetMouse()
+
+--====================================================
+-- THEME
+--====================================================
+
+local THEME = {
+	BG = Color3.fromRGB(12, 13, 18),
+	CARD = Color3.fromRGB(18, 19, 26),
+	CARD_DARK = Color3.fromRGB(10, 11, 15),
+
+	ACCENT = Color3.fromRGB(88, 101, 242),
+	ACCENT_SOFT = Color3.fromRGB(60, 70, 200),
+
+	TEXT = Color3.fromRGB(235, 235, 245),
+	MUTED = Color3.fromRGB(150, 150, 170),
+	OUTLINE = Color3.fromRGB(35, 35, 45)
+}
+
+--====================================================
+-- HELPERS
+--====================================================
+
+library.tween = function(self, obj, info, props)
+	TweenService:Create(obj, info, props):Play()
+end
+
+library.create = function(self, class, props, parent)
+	local obj = Instance.new(class)
+	for k, v in pairs(props) do
+		obj[k] = v
+	end
+	if parent then
+		obj.Parent = parent
+	end
+	return obj
+end
+
+library.get_text_size = function(self, ...)
+	return TextService:GetTextSize(...)
+end
+
+local function roundify(obj, radius)
+	local corner = Instance.new("UICorner")
+	corner.CornerRadius = UDim.new(0, radius or 8)
+	corner.Parent = obj
+	return corner
+end
+
+local function stroke(obj, thickness, color)
+	local s = Instance.new("UIStroke")
+	s.Thickness = thickness or 1
+	s.Color = color or THEME.OUTLINE
+	s.Parent = obj
+	return s
+end
+
+local function softShadow(parent)
+	local shadow = Instance.new("ImageLabel")
+	shadow.Name = "Shadow"
+	shadow.AnchorPoint = Vector2.new(0.5, 0.5)
+	shadow.Position = UDim2.new(0.5, 0, 0.5, 6)
+	shadow.Size = UDim2.new(1, 20, 1, 20)
+	shadow.BackgroundTransparency = 1
+	shadow.Image = "rbxassetid://1316045217"
+	shadow.ImageTransparency = 0.85
+	shadow.ZIndex = 0
+	shadow.Parent = parent
+	return shadow
+end
+
+--====================================================
+-- DRAGGING
+--====================================================
+
+library.set_draggable = function(self, gui)
+	local dragging, dragInput, dragStart, startPos
+
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(
+			startPos.X.Scale,
+			startPos.X.Offset + delta.X,
+			startPos.Y.Scale,
+			startPos.Y.Offset + delta.Y
+		)
+	end
+
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or
+			input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or
+			input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+end
+
+--====================================================
+-- MAIN LIB
+--====================================================
+
+library.new = function(library_title, cfg_location)
+	local menu = {}
+	menu.values = {}
+
+	menu.on_load_cfg = loadstring(game:HttpGet(
+		"https://raw.githubusercontent.com/neverlosemek/uifor/refs/heads/main/something", true
+	))().new("on_load_cfg")
+
+	if not isfolder(cfg_location) then
+		makefolder(cfg_location)
+	end
+
+	--------------------------------------------------
+	-- SAVE / LOAD
+	--------------------------------------------------
+
+	function menu.copy(original)
+		local copy = {}
+		for k, v in pairs(original) do
+			if type(v) == "table" then
+				v = menu.copy(v)
+			end
+			copy[k] = v
+		end
+		return copy
+	end
+
+	function menu.save_cfg(name)
+		local values_copy = menu.copy(menu.values)
+
+		for _, tab in next, values_copy do
+			for _, section in next, tab do
+				for _, sector in next, section do
+					for _, element in next, sector do
+						if element.Color then
+							element.Color = {
+								R = element.Color.R,
+								G = element.Color.G,
+								B = element.Color.B
+							}
+						end
+					end
+				end
+			end
+		end
+
+		writefile(cfg_location .. name .. ".txt", HttpService:JSONEncode(values_copy))
+	end
+
+	function menu.load_cfg(name)
+		local new_values = HttpService:JSONDecode(readfile(cfg_location .. name .. ".txt"))
+
+		for t, tab in next, new_values do
+			for s, section in next, tab do
+				for sec, sector in next, section do
+					for e, element in next, sector do
+						if element.Color then
+							element.Color = Color3.new(
+								element.Color.R,
+								element.Color.G,
+								element.Color.B
+							)
+						end
+						pcall(function()
+							menu.values[t][s][sec][e] = element
+						end)
+					end
+				end
+			end
+		end
+
+		menu.on_load_cfg:Fire()
+	end
+
+	--------------------------------------------------
+	-- GUI
+	--------------------------------------------------
+
+	local ScreenGui = library:create("ScreenGui", {
+		Name = "PolishedUI",
+		ResetOnSpawn = false,
+		ZIndexBehavior = Enum.ZIndexBehavior.Global,
+		IgnoreGuiInset = true
+	})
+
+	if syn then
+		syn.protect_gui(ScreenGui)
+	end
+
+	ScreenGui.Parent = game:GetService("CoreGui")
+
+	local Main = library:create("Frame", {
+		AnchorPoint = Vector2.new(0.5, 0.5),
+		BackgroundColor3 = THEME.BG,
+		Position = UDim2.new(0.5, 0, 0.5, 0),
+		Size = UDim2.new(0, 740, 0, 580),
+		Name = "Main"
+	}, ScreenGui)
+
+	roundify(Main, 14)
+	stroke(Main, 1, THEME.OUTLINE)
+	softShadow(Main)
+
+	library:set_draggable(Main)
+
+	--------------------------------------------------
+	-- HEADER
+	--------------------------------------------------
+
+	local Header = library:create("Frame", {
+		BackgroundColor3 = THEME.CARD,
+		Size = UDim2.new(1, 0, 0, 44),
+		Name = "Header"
+	}, Main)
+
+	roundify(Header, 14)
+	stroke(Header, 1, THEME.OUTLINE)
+
+	local Title = library:create("TextLabel", {
+		BackgroundTransparency = 1,
+		Position = UDim2.new(0, 14, 0, 0),
+		Size = UDim2.new(1, -20, 1, 0),
+		Font = Enum.Font.GothamBold,
+		Text = library_title,
+		TextColor3 = THEME.TEXT,
+		TextSize = 16,
+		TextXAlignment = Enum.TextXAlignment.Left
+	}, Header)
+
+	--------------------------------------------------
+	-- TAB BAR
+	--------------------------------------------------
+
+	local TabButtons = library:create("Frame", {
+		BackgroundColor3 = THEME.CARD,
+		Position = UDim2.new(0, 10, 0, 60),
+		Size = UDim2.new(0, 90, 1, -70)
+	}, Main)
+
+	roundify(TabButtons, 10)
+	stroke(TabButtons, 1, THEME.OUTLINE)
+
+	local TabLayout = library:create("UIListLayout", {
+		HorizontalAlignment = Enum.HorizontalAlignment.Center,
+		Padding = UDim.new(0, 8)
+	}, TabButtons)
+
+	--------------------------------------------------
+	-- CONTENT
+	--------------------------------------------------
+
+	local Tabs = library:create("Frame", {
+		BackgroundTransparency = 1,
+		Position = UDim2.new(0, 115, 0, 60),
+		Size = UDim2.new(1, -125, 1, -70)
+	}, Main)
+
+	--------------------------------------------------
+	-- STATE
+	--------------------------------------------------
+
+	local selected_tab
+	local tab_num = 1
+	local is_first_tab = true
+
+	--------------------------------------------------
+	-- TAB API
+	--------------------------------------------------
+
+	menu.new_tab = function(tab_image)
+		local tab = { tab_num = tab_num }
+		menu.values[tab_num] = {}
+		tab_num += 1
+
+		local TabButton = library:create("TextButton", {
+			BackgroundColor3 = THEME.CARD_DARK,
+			Size = UDim2.new(1, -12, 0, 60),
+			Text = "",
+			AutoButtonColor = false
+		}, TabButtons)
+
+		roundify(TabButton, 8)
+		stroke(TabButton, 1, THEME.OUTLINE)
+
+		local Icon = library:create("ImageLabel", {
+			BackgroundTransparency = 1,
+			AnchorPoint = Vector2.new(0.5, 0.5),
+			Position = UDim2.new(0.5, 0, 0.5, 0),
+			Size = UDim2.new(0, 26, 0, 26),
+			Image = tab_image,
+			ImageColor3 = THEME.MUTED
+		}, TabButton)
+
+		local TabFrame = library:create("Frame", {
+			BackgroundTransparency = 1,
+			Size = UDim2.new(1, 0, 1, 0),
+			Visible = false
+		}, Tabs)
+
+		if is_first_tab then
+			is_first_tab = false
+			selected_tab = TabButton
+			Icon.ImageColor3 = THEME.ACCENT
+			TabFrame.Visible = true
+		end
+
+		TabButton.MouseEnter:Connect(function()
+			if selected_tab ~= TabButton then
+				library:tween(Icon, TweenInfo.new(0.2), {
+					ImageColor3 = THEME.TEXT
+				})
+			end
+		end)
+
+		TabButton.MouseLeave:Connect(function()
+			if selected_tab ~= TabButton then
+				library:tween(Icon, TweenInfo.new(0.2), {
+					ImageColor3 = THEME.MUTED
+				})
+			end
+		end)
+
+		TabButton.MouseButton1Down:Connect(function()
+			if selected_tab == TabButton then return end
+
+			for _, b in pairs(TabButtons:GetChildren()) do
+				if b:IsA("TextButton") then
+					local img = b:FindFirstChildOfClass("ImageLabel")
+					if img then
+						library:tween(img, TweenInfo.new(0.2), {
+							ImageColor3 = THEME.MUTED
+						})
+					end
+				end
+			end
+
+			for _, t in pairs(Tabs:GetChildren()) do
+				t.Visible = false
+			end
+
+			selected_tab = TabButton
+			TabFrame.Visible = true
+
+			library:tween(Icon, TweenInfo.new(0.2), {
+				ImageColor3 = THEME.ACCENT
+			})
+		end)
+
+		--------------------------------------------------
+		-- SECTIONS
+		--------------------------------------------------
+
+		local is_first_section = true
+		local selected_section
+		local num_sections = 0
+
+		local SectionBar = library:create("Frame", {
+			BackgroundColor3 = THEME.CARD,
+			Size = UDim2.new(1, 0, 0, 32)
+		}, TabFrame)
+
+		roundify(SectionBar, 10)
+		stroke(SectionBar, 1, THEME.OUTLINE)
+
+		local SectionLayout = library:create("UIListLayout", {
+			FillDirection = Enum.FillDirection.Horizontal,
+			HorizontalAlignment = Enum.HorizontalAlignment.Center
+		}, SectionBar)
+
+		local SectionFrames = library:create("Frame", {
+			BackgroundTransparency = 1,
+			Position = UDim2.new(0, 0, 0, 36),
+			Size = UDim2.new(1, 0, 1, -36)
+		}, TabFrame)
+
+		tab.new_section = function(section_name)
+			local section = {}
+			num_sections += 1
+
+			menu.values[tab.tab_num][section_name] = {}
+
+			local SectionButton = library:create("TextButton", {
+				BackgroundTransparency = 1,
+				Size = UDim2.new(1 / num_sections, 0, 1, 0),
+				Font = Enum.Font.Gotham,
+				Text = section_name,
+				TextColor3 = THEME.MUTED,
+				TextSize = 14,
+				AutoButtonColor = false
+			}, SectionBar)
+
+			for _, b in pairs(SectionBar:GetChildren()) do
+				if b:IsA("TextButton") then
+					b.Size = UDim2.new(1 / num_sections, 0, 1, 0)
+				end
+			end
+
+			local SectionFrame = library:create("Frame", {
+				BackgroundTransparency = 1,
+				Size = UDim2.new(1, 0, 1, 0),
+				Visible = false
+			}, SectionFrames)
+
+			local Left = library:create("Frame", {
+				BackgroundTransparency = 1,
+				Position = UDim2.new(0, 10, 0, 10),
+				Size = UDim2.new(0.5, -15, 1, -20)
+			}, SectionFrame)
+
+			local Right = library:create("Frame", {
+				BackgroundTransparency = 1,
+				Position = UDim2.new(0.5, 5, 0, 10),
+				Size = UDim2.new(0.5, -15, 1, -20)
+			}, SectionFrame)
+
+			local function layout(frame)
+				library:create("UIListLayout", {
+					HorizontalAlignment = Enum.HorizontalAlignment.Center,
+					Padding = UDim.new(0, 10)
+				}, frame)
+			end
+
+			layout(Left)
+			layout(Right)
+
+			SectionButton.MouseEnter:Connect(function()
+				if selected_section ~= SectionButton then
+					library:tween(SectionButton, TweenInfo.new(0.2), {
+						TextColor3 = THEME.TEXT
+					})
+				end
+			end)
+
+			SectionButton.MouseLeave:Connect(function()
+				if selected_section ~= SectionButton then
+					library:tween(SectionButton, TweenInfo.new(0.2), {
+						TextColor3 = THEME.MUTED
+					})
+				end
+			end)
+
+			SectionButton.MouseButton1Down:Connect(function()
+				for _, b in pairs(SectionBar:GetChildren()) do
+					if b:IsA("TextButton") then
+						library:tween(b, TweenInfo.new(0.2), {
+							TextColor3 = THEME.MUTED
+						})
+					end
+				end
+
+				for _, f in pairs(SectionFrames:GetChildren()) do
+					f.Visible = false
+				end
+
+				selected_section = SectionButton
+				SectionFrame.Visible = true
+
+				library:tween(SectionButton, TweenInfo.new(0.2), {
+					TextColor3 = THEME.ACCENT
+				})
+			end)
+
+			if is_first_section then
+				is_first_section = false
+				selected_section = SectionButton
+				SectionButton.TextColor3 = THEME.ACCENT
+				SectionFrame.Visible = true
+			end
+
+			--------------------------------------------------
+			-- SECTOR
+			--------------------------------------------------
+
+			section.new_sector = function(sector_name, sector_side)
+				local sector = {}
+
+				local actual_side = (sector_side == "Right" and Right) or Left
+				menu.values[tab.tab_num][section_name][sector_name] = {}
+
+				local Border = library:create("Frame", {
+					BackgroundColor3 = THEME.CARD_DARK,
+					Size = UDim2.new(1, 0, 0, 30)
+				}, actual_side)
+
+				roundify(Border, 8)
+				stroke(Border, 1, THEME.OUTLINE)
+
+				local Title = library:create("TextLabel", {
+					BackgroundTransparency = 1,
+					Size = UDim2.new(1, -12, 0, 20),
+					Position = UDim2.new(0, 6, 0, 5),
+					Font = Enum.Font.GothamBold,
+					Text = sector_name,
+					TextColor3 = THEME.TEXT,
+					TextSize = 13,
+					TextXAlignment = Enum.TextXAlignment.Left
+				}, Border)
+
+				local Container = library:create("Frame", {
+					BackgroundTransparency = 1,
+					Position = UDim2.new(0, 0, 0, 30),
+					Size = UDim2.new(1, 0, 1, -30)
+				}, Border)
+
+				library:create("UIListLayout", {
+					HorizontalAlignment = Enum.HorizontalAlignment.Center,
+					Padding = UDim.new(0, 8)
+				}, Container)
+
+				--------------------------------------------------
+				-- ELEMENTS (API COMPATIBLE)
+				--------------------------------------------------
+
+				sector.element = function(type, text, data, callback, dangerous, c_flag)
+					text = text or type
+					data = data or {}
+					callback = callback or function() end
+
+					local value = {}
+					local flag = (c_flag and (text .. " " .. c_flag)) or text
+					menu.values[tab.tab_num][section_name][sector_name][flag] = value
+
+					local function do_callback()
+						menu.values[tab.tab_num][section_name][sector_name][flag] = value
+						callback(value)
+					end
+
+					local default = data.default
+					local element = {}
+
+					element.get_value = function()
+						return value
+					end
+
+					--------------------------------------------------
+					-- TOGGLE
+					--------------------------------------------------
+
+					if type == "Toggle" then
+						Border.Size += UDim2.new(0, 0, 0, 26)
+						value = { Toggle = (default and default.Toggle) or false }
+
+						local Button = library:create("TextButton", {
+							BackgroundTransparency = 1,
+							Size = UDim2.new(1, -10, 0, 24),
+							Text = "",
+							AutoButtonColor = false
+						}, Container)
+
+						roundify(Button, 6)
+
+						local Box = library:create("Frame", {
+							BackgroundColor3 = THEME.CARD,
+							Position = UDim2.new(0, 4, 0.5, -6),
+							Size = UDim2.new(0, 12, 0, 12)
+						}, Button)
+
+						roundify(Box, 3)
+						stroke(Box, 1, THEME.OUTLINE)
+
+						local Label = library:create("TextLabel", {
+							BackgroundTransparency = 1,
+							Position = UDim2.new(0, 24, 0, 0),
+							Size = UDim2.new(1, -30, 1, 0),
+							Font = Enum.Font.Gotham,
+							Text = text,
+							TextColor3 = THEME.MUTED,
+							TextSize = 13,
+							TextXAlignment = Enum.TextXAlignment.Left
+						}, Button)
+
+						element.set_value = function(_, new_value, cb)
+							value = new_value or value
+							menu.values[tab.tab_num][section_name][sector_name][flag] = value
+
+							if value.Toggle then
+								library:tween(Box, TweenInfo.new(0.2), {
+									BackgroundColor3 = THEME.ACCENT
+								})
+								library:tween(Label, TweenInfo.new(0.2), {
+									TextColor3 = THEME.TEXT
+								})
+							else
+								library:tween(Box, TweenInfo.new(0.2), {
+									BackgroundColor3 = THEME.CARD
+								})
+								library:tween(Label, TweenInfo.new(0.2), {
+									TextColor3 = THEME.MUTED
+								})
+							end
+
+							if not cb then
+								do_callback()
+							end
+						end
+
+						Button.MouseButton1Down:Connect(function()
+							element:set_value({ Toggle = not value.Toggle })
+						end)
+
+						element:set_value(value, true)
+
+					--------------------------------------------------
+					-- SLIDER
+					--------------------------------------------------
+
+					elseif type == "Slider" then
+						Border.Size += UDim2.new(0, 0, 0, 38)
+						local min = (default and default.min) or 0
+						local max = (default and default.max) or 100
+						value = { Slider = (default and default.default) or min }
+
+						local Holder = library:create("Frame", {
+							BackgroundTransparency = 1,
+							Size = UDim2.new(1, -10, 0, 36)
+						}, Container)
+
+						local Label = library:create("TextLabel", {
+							BackgroundTransparency = 1,
+							Position = UDim2.new(0, 4, 0, 0),
+							Size = UDim2.new(1, -60, 0, 16),
+							Font = Enum.Font.Gotham,
+							Text = text,
+							TextColor3 = THEME.MUTED,
+							TextSize = 13,
+							TextXAlignment = Enum.TextXAlignment.Left
+						}, Holder)
+
+						local ValueLabel = library:create("TextLabel", {
+							BackgroundTransparency = 1,
+							Position = UDim2.new(1, -50, 0, 0),
+							Size = UDim2.new(0, 46, 0, 16),
+							Font = Enum.Font.GothamBold,
+							Text = tostring(value.Slider),
+							TextColor3 = THEME.TEXT,
+							TextSize = 13,
+							TextXAlignment = Enum.TextXAlignment.Right
+						}, Holder)
+
+						local Bar = library:create("Frame", {
+							BackgroundColor3 = THEME.CARD,
+							Position = UDim2.new(0, 4, 0, 22),
+							Size = UDim2.new(1, -8, 0, 8)
+						}, Holder)
+
+						roundify(Bar, 4)
+						stroke(Bar, 1, THEME.OUTLINE)
+
+						local Fill = library:create("Frame", {
+							BackgroundColor3 = THEME.ACCENT,
+							Size = UDim2.new(0, 0, 1, 0)
+						}, Bar)
+
+						roundify(Fill, 4)
+
+						local sliding = false
+
+						local function set_slider(x)
+							local rel = math.clamp((x - Bar.AbsolutePosition.X) / Bar.AbsoluteSize.X, 0, 1)
+							Fill.Size = UDim2.new(rel, 0, 1, 0)
+							local val = math.floor(min + (max - min) * rel)
+							if val ~= value.Slider then
+								value.Slider = val
+								ValueLabel.Text = tostring(val)
+								do_callback()
+							end
+						end
+
+						Bar.InputBegan:Connect(function(input)
+							if input.UserInputType == Enum.UserInputType.MouseButton1 then
+								sliding = true
+								set_slider(mouse.X)
+							end
+						end)
+
+						UserInputService.InputChanged:Connect(function(input)
+							if sliding and input.UserInputType == Enum.UserInputType.MouseMovement then
+								set_slider(mouse.X)
+							end
+						end)
+
+						UserInputService.InputEnded:Connect(function(input)
+							if input.UserInputType == Enum.UserInputType.MouseButton1 then
+								sliding = false
+							end
+						end)
+
+						element.set_value = function(_, new_value, cb)
+							value = new_value or value
+							menu.values[tab.tab_num][section_name][sector_name][flag] = value
+
+							local rel = (value.Slider - min) / (max - min)
+							Fill.Size = UDim2.new(rel, 0, 1, 0)
+							ValueLabel.Text = tostring(value.Slider)
+
+							if not cb then
+								do_callback()
+							end
+						end
+
+						element:set_value(value, true)
+					end
+
+					menu.on_load_cfg:Connect(function()
+						if element.set_value then
+							element:set_value(menu.values[tab.tab_num][section_name][sector_name][flag], true)
+						end
+					end)
+
+					return element
+				end
+
+				return sector
+			end
+
+			return section
+		end
+
+		return tab
+	end
+
+	return menu
+end
+
+return library
