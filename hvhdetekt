@@ -8,12 +8,13 @@ local StarterGui = game:GetService("StarterGui")
 
 -- !! ONLY EDIT THIS TABLE !!
 local FLAGGED_PLAYERS = {
-	"Andonixxu",
-	"Pr012yt1",
-	"OSANUNCASERINDE",
-	"StarryBuild3rRift",
-	"SPICKENDER2",
-	""
+    "Andonixxu",
+    "Pr012yt1",
+    "OSANUNCASERINDE",
+    "StarryBuild3rRift",
+    "SPICKENDER2",
+    "reecypeacys_yt123",
+    "K1NG_KAYKAY"
 }
 
 -- internal tracking so we don't spam while they're IN the server
