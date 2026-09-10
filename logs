@@ -1,0 +1,321 @@
+[FLog::Output] All use of Roblox services must comply with Roblox's Terms of Use, Privacy Policy, Community Standards, and applicable laws. Processing of User personal information is limited to the purposes expressly permitted therein.
+2026-09-10T07:06:59.162Z,0.162179,3e64,6,Warning [FLog::RobloxStarter] Starting module: Logging
+2026-09-10T07:06:59.162Z,0.162179,3e64,6,Warning [FLog::RobloxStarter] Starting module: Network
+2026-09-10T07:06:59.164Z,0.164179,3e64,6,Warning [FLog::RobloxStarterNetworkStarterModule] userAgent: Roblox/WinPCGDK ROBLOX PCGDK App 1.0.0RobloxApp/2.738.0.1396 (GlobalDist; RobloxDirectDownload)
+2026-09-10T07:06:59.164Z,0.164179,3e64,6,Warning [FLog::RobloxStarter] Roblox stage ReadyForFlagFetch completed
+2026-09-10T07:06:59.164Z,0.164179,3e64,6,Info [FLog::UpdateController] UpdateController: versionQueryUrl: https://clientsettingscdn.roblox.com/v2/client-version/WindowsPlayer
+2026-09-10T07:06:59.164Z,0.164179,3e64,6,Info [FLog::UpdateController] WindowsUpdateController: updaterFullPath: C:\Program Files\WindowsApps\ROBLOXCorporation.RobloxGDK_2.738.1396.0_x64__55nm5eh3cm0pr\RobloxPlayerInstaller.exe
+2026-09-10T07:06:59.164Z,0.164179,18b8,6,Info [FLog::UpdateController] Update check thread started
+2026-09-10T07:06:59.165Z,0.165178,18b8,6,Info [FLog::UpdateController] Checking if updater exists at C:\Program Files\WindowsApps\ROBLOXCorporation.RobloxGDK_2.738.1396.0_x64__55nm5eh3cm0pr\RobloxPlayerInstaller.exe. Returning false
+2026-09-10T07:06:59.165Z,0.165178,18b8,6,Warning [FLog::UpdateController] Updater not found. Skipping update
+2026-09-10T07:06:59.165Z,0.165178,18b8,6,Info [FLog::UpdateController] Update check thread: updateRequired FALSE
+2026-09-10T07:06:59.171Z,0.171179,5894,6,Warning [FLog::RobloxStarter] Starting module: FlagFetching
+2026-09-10T07:06:59.171Z,0.171179,5894,6,Warning [FLog::FlagFetchingStarterModule] Starting FlagFetchingStarterModule
+2026-09-10T07:06:59.171Z,0.171179,5894,6,Warning [FLog::FlagFetchingStarterModule] Fetching and loading flags from CDN
+2026-09-10T07:06:59.171Z,0.171179,5894,6,Warning [FLog::FlagFetchingStarterModule] Fetching flags from CDN, attempt: 0
+2026-09-10T07:06:59.172Z,0.172179,5894,6,Warning [FLog::Output] settingsUrl: https://clientsettingscdn.roblox.com/v2/settings-compressed/application/PCGDKApp/67d516a78ef797d4f99059229489371c538ef02a4c8425da431fd578454203cf.dcz
+2026-09-10T07:06:59.277Z,0.277914,5894,6,Warning [FLog::FlagFetchingStarterModule] Successfully loaded flags
+2026-09-10T07:06:59.279Z,0.279913,3e64,6,Debug [FLog::UpdateController] Wrote UpdateController cache to AppStorage; json: , channel: ""
+2026-09-10T07:06:59.286Z,0.286909,3e64,6,Info [FLog::CrashReportLog] added file C:\Users\netdo\AppData\Local\RobloxPCGDK\logs\2.738.0.1396_20260910T070659Z_Player_D17CA_last.log as attachment 2.738.0.1396_20260910T070659Z_Player_D17CA_last.log
+2026-09-10T07:06:59.302Z,0.302900,3e64,6 [FLog::LogWin32BTId] LogWin32BTId, App, cookie Native => Engine set RBXEventTrackerV2 as CreateDate=09/10/2026 01:41:08&rbxuid=11144054151&browserid=1776027710375002&rbxid=11140497212
+2026-09-10T07:06:59.481Z,0.481150,0418,12 [DFLog::HttpTraceError] HttpResponse(#4 0xecc4d90) time:317.2ms (net:316.8ms timeInRetryQueue:0.0ms)status:404 Not Found bodySize:0 url:{ "https://apis.roblox.com/" } ip:128.116.45.3 external:1 numberOfTimesRetried:0
+2026-09-10T07:06:59.485Z,0.485127,0418,12 [DFLog::HttpTraceError] HttpResponse(#2 0xecc3f90) time:321.1ms (net:320.7ms timeInRetryQueue:0.0ms)status:404 Not Found bodySize:0 url:{ "https://apis.roblox.com/" } ip:128.116.45.3 external:1 numberOfTimesRetried:0
+2026-09-10T07:06:59.485Z,0.485127,0418,12 [DFLog::HttpTraceError] HttpResponse(#1 0xecc3890) time:321.7ms (net:321.3ms timeInRetryQueue:0.0ms)status:404 Not Found bodySize:0 url:{ "https://apis.roblox.com/" } ip:128.116.45.3 external:1 numberOfTimesRetried:0
+2026-09-10T07:06:59.489Z,0.489104,0418,12 [DFLog::HttpTraceError] HttpResponse(#3 0xecc4690) time:326.1ms (net:325.7ms timeInRetryQueue:0.0ms)status:404 Not Found bodySize:0 url:{ "https://apis.roblox.com/" } ip:128.116.45.3 external:1 numberOfTimesRetried:0
+2026-09-10T07:06:59.546Z,0.546770,3e64,6,Warning [FLog::Systray] Tray treatment is ON)
+2026-09-10T07:06:59.546Z,0.546770,3e64,6,Warning [FLog::Systray] In Tray ELT Treatment group
+2026-09-10T07:06:59.547Z,0.547764,3e64,6,Info [FLog::Systray] Systray initialized in async mode
+2026-09-10T07:06:59.547Z,0.547764,3e64,6,Warning [FLog::Output] FLog::DebugDurationLogging milestone:[process_boot_to_main_duration], duration:[3320]
+2026-09-10T07:06:59.547Z,0.547764,3a18,6,Info [FLog::WndProcessCheck] waitForNewPlayerProcess new waiting for mutex result is 0X000000, ERROR The operation completed successfully.
+2026-09-10T07:06:59.547Z,0.547764,3a18,6,Info [FLog::WndProcessCheck] WindowsAppReloadTelemetry MutexWaitResultLoopUpdate
+2026-09-10T07:06:59.549Z,0.549752,3e64,6 [FLog::Output] DUAR is on.
+2026-09-10T07:06:59.549Z,0.549752,3e64,6,Warning [FLog::RobloxStarter] Starting module: AppRemoteCheck
+2026-09-10T07:06:59.554Z,0.554723,3e64,6 [FLog::LogWin32BTId] LogWin32BTId, App, cookie Native => Engine set RBXEventTrackerV2 as CreateDate=09/10/2026 01:41:08&rbxuid=11144054151&browserid=1776027710375002&rbxid=11140497212
+2026-09-10T07:06:59.554Z,0.554723,3e64,6,Warning [FLog::AppRemoteCheckStarterModule] No BTID override detected.
+2026-09-10T07:06:59.554Z,0.554723,3e64,6,Warning [FLog::AppRemoteCheckStarterModule] AppRemoteCheckStarterModule started
+2026-09-10T07:06:59.555Z,0.555718,3e64,6,Warning [FLog::AppRemoteCheckStarterModule] AppRemoteCheckStarterModule finished: stage = 2, BTID = 1776027710375002, upgradeStatus = 3.
+2026-09-10T07:06:59.555Z,0.555718,3e64,6 [FLog::LogWin32BTId] LogWin32BTId, App, cookie Engine => Native set RBXEventTrackerV2 as CreateDate=09/10/2026 01:41:08&rbxuid=11144054151&browserid=1776027710375002&rbxid=11140497212
+2026-09-10T07:06:59.556Z,0.556712,3e64,6,Warning [FLog::RobloxStarter] AppRemoteCheck module completed
+2026-09-10T07:06:59.556Z,0.556712,3e64,6,Warning [FLog::RobloxStarter] Starting module: GlobalInstance
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Critical [DFLog::Mimalloc] Mimalloc integration detected, settings:
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Critical [DFLog::Mimalloc] mi_option_show_errors=1
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_show_stats=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_verbose=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_eager_commit=1
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_arena_eager_commit=2
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_purge_decommits=1
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_allow_large_os_pages=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_reserve_huge_os_pages=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_reserve_huge_os_pages_at=-1
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_reserve_os_memory=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_deprecated_segment_cache=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_deprecated_page_reset=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_abandoned_page_purge=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_purge_delay=1000
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_deprecated_segment_reset=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_eager_commit_delay=1
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_use_numa_nodes=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_disallow_os_alloc=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_os_tag=100
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_max_errors=32
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_max_warnings=32
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_deprecated_max_segment_reclaim=10
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_destroy_on_exit=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_arena_reserve=1048576
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_arena_purge_mult=1
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_deprecated_purge_extend_delay=1
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_disallow_arena_alloc=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_retry_on_oom=400
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_visit_abandoned=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_guarded_min=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_guarded_max=1073741824
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_guarded_precise=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_guarded_sample_rate=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_guarded_sample_seed=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_page_reclaim_on_free=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_page_full_retain=2
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_page_max_candidates=4
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_max_vabits=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_pagemap_commit=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_page_commit_on_demand=0
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_page_max_reclaim=-1
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Info [DFLog::Mimalloc] mi_option_page_cross_thread_max_reclaim=32
+2026-09-10T07:06:59.565Z,0.565660,3e64,6,Critical [FLog::Output] Build system id: 1
+2026-09-10T07:06:59.566Z,0.566654,3e64,6,Info [FLog::AppMemUsageStatus] 923286370
+2026-09-10T07:06:59.575Z,0.575602,3e64,6 [FLog::Output] *******
+** Validated reflection database in 6.959645 ms, found 7327 entries with the following skipped: 0 enums, 0 properties, 0 functions, 0 events, 0 callbacks, 0 classes.
+*******
+
+2026-09-10T07:06:59.577Z,0.577776,3e64,6,Info [FLog::TombstoneCache] [FlagCache] Tombstone 1, expiry 360, holdout false, channel '' (production), read from file: C:\Users\netdo\AppData\Local\Temp\Roblox\cache\tombstone.dat
+2026-09-10T07:06:59.577Z,0.577776,3e64,6,Info [FLog::TombstoneCache] [FlagCache] Setting holdout experiment state to: false
+2026-09-10T07:06:59.578Z,0.578782,3e64,6,Warning [FLog::LocalStorageHandler] Not available on the current platform.
+2026-09-10T07:06:59.578Z,0.578782,3e64,6 [FLog::ClientRunInfo] RobloxGitHash: b144f068bc6474b50d3f9daf89b5ed050f21ced9
+2026-09-10T07:06:59.578Z,0.578782,3e64,6 [FLog::ClientRunInfo] The base url is http://www.roblox.com/
+2026-09-10T07:06:59.578Z,0.578782,3e64,6 [FLog::ClientRunInfo] The channel is production
+2026-09-10T07:06:59.578Z,0.578782,3e64,6,Info [DFLog::SystemDialogHandler] Platform handler was instanced.
+2026-09-10T07:06:59.578Z,0.578782,3e64,6,Info [DFLog::AppPlatformQoSEmergency] AppPlatformQoSEmergencyHandler was instanced.
+2026-09-10T07:06:59.578Z,0.578782,3e64,6,Warning [FLog::RobloxStarter] GlobalInstance module completed
+2026-09-10T07:06:59.578Z,0.578782,3e64,6,Warning [FLog::RobloxStarter] All PreDM modules completed
+2026-09-10T07:06:59.578Z,0.578782,3e64,6,Info [DFLog::DesignFoundationsWin32] Win32DesignFoundationsImpl: registering platform implementation
+2026-09-10T07:06:59.578Z,0.578782,3e64,6,Info [FLog::DesignFoundationsCore] setPlatformImpl: registering platform implementation.
+2026-09-10T07:06:59.578Z,0.578782,3e64,6,Warning [FLog::RobloxStarter] RobloxStarter destroyed
+2026-09-10T07:06:59.684Z,0.684737,3e64,6 [FLog::Warning] WebView2, cannot report without a btid
+2026-09-10T07:06:59.691Z,0.691735,3e64,6,Info [FLog::WindowsNativeAdsProtocol] Getting WindowsNativeAdsImpl instance
+2026-09-10T07:06:59.691Z,0.691735,3e64,6,Info [FLog::WindowsNativeAdsProtocol] Setting dependencies for WindowsNativeAdsImpl
+2026-09-10T07:06:59.691Z,0.691735,3e64,6,Warning [FLog::RobloxStarter] Starting module: DataModel
+2026-09-10T07:06:59.691Z,0.691735,3e64,6 [FLog::SingleSurfaceApp] initializeWithAppStarter
+2026-09-10T07:06:59.691Z,0.691735,3e64,6 [FLog::SingleSurfaceApp] initializeSingleton
+2026-09-10T07:06:59.695Z,0.695733,3e64,6 [FLog::Output] Evaluating deferred inferred crashes
+2026-09-10T07:06:59.705Z,0.705730,3e64,6 [FLog::SingleSurfaceApp] setStage: (stage:Native)
+2026-09-10T07:06:59.705Z,0.705730,3e64,6,Warning [FLog::SingleSurfaceApp] instantiate controllers
+2026-09-10T07:06:59.705Z,0.705730,3e64,6,Info [DFLog::RbxTransportIoLibContext] RbxTransport I/O backend chosen: sys
+2026-09-10T07:06:59.705Z,0.705730,3e64,6,Info [DFLog::RbxTransportRnaExp] Initialized RtcIoRna with 1 event loop threads
+2026-09-10T07:06:59.706Z,0.706729,3e64,6 [FLog::SurfaceController] SurfaceController[_:1]::SurfaceController, count: 1
+2026-09-10T07:06:59.706Z,0.706729,3e64,6,Warning [FLog::SingleSurfaceApp] instantiate experience coordinator
+2026-09-10T07:06:59.706Z,0.706729,3e64,6,Info [DFLog::CoordinatorMemoryPressure] Setting memory pressure threshold to none
+2026-09-10T07:06:59.707Z,0.707729,3e64,6,Warning [FLog::DataModelStarterModule] Launching Lua App
+2026-09-10T07:06:59.707Z,0.707729,3e64,6 [FLog::SingleSurfaceApp] initializeLuaAppWithLoggedInUser: (stage:Native).
+2026-09-10T07:06:59.707Z,0.707729,3e64,6 [FLog::SingleSurfaceApp] applyLocale
+2026-09-10T07:06:59.713Z,0.713727,3e64,100 [FLog::DataModelPatchConfigurer] [_UniversalAppPatch] Load configs for user key: app:5291221364658068319
+2026-09-10T07:06:59.715Z,0.715726,3e64,100 [FLog::DataModelPatchConfigurer] [_UniversalAppPatch] Retrieving patch
+2026-09-10T07:06:59.715Z,0.715726,3e64,100,Warning [FLog::DataModelPatchConfigurer] getCachedPatch Local Patch DataModelPatchConfig : type=2, assetId=118593852151835, assetVersion=13438, maxAppVersion=738, localAssetURI=rbxasset://models/UniversalApp/UniversalApp.rbxm
+2026-09-10T07:06:59.715Z,0.715726,3e64,100,Warning [FLog::DataModelPatchConfigurer] getCachedPatch: config: 118593852151835.13438
+2026-09-10T07:06:59.716Z,0.716726,3e64,100,Warning [FLog::DataModelPatchConfigurer] getCachedPatch: numAttemptsRemaining: 1
+2026-09-10T07:06:59.716Z,0.716726,3e64,100,Warning [FLog::DataModelPatchConfigurer] getCachedPatchFromConfig: contentId=rbxasset://models/UniversalApp/UniversalApp.rbxm
+2026-09-10T07:06:59.716Z,0.716726,3e64,100,Warning [FLog::DataModelPatchConfigurer] getCachedPatch: get patch from content provider for Model
+2026-09-10T07:06:59.716Z,0.716726,5e90,6,Warning [FLog::Output] Hello world, CLI-208683!
+2026-09-10T07:06:59.716Z,0.716726,5e90,6,Warning [FLog::Output] Hello world, CLI-207485!
+2026-09-10T07:06:59.716Z,0.716726,5e90,6,Warning [FLog::Output] Hello again, world 206748!
+2026-09-10T07:06:59.716Z,0.716726,5e90,6,Warning [FLog::Output] Hello world CLI-206426!
+2026-09-10T07:06:59.716Z,0.716726,5e90,6,Warning [FLog::Output] Hello world ...!
+2026-09-10T07:06:59.716Z,0.716726,5e90,6,Warning [FLog::Output] Hello 198367!
+2026-09-10T07:06:59.716Z,0.716726,3e64,6,Warning [DFLog::RbxmFileManager] LocalStorageManager is not available.
+2026-09-10T07:06:59.716Z,0.716726,5e90,6,Warning [FLog::Output] Hello World! **CLI-199819**
+2026-09-10T07:06:59.716Z,0.716726,5e90,6,Warning [FLog::Output] Hello World! CLI-204362
+2026-09-10T07:06:59.716Z,0.716726,5e90,6,Warning [FLog::Output] Hello World! from CLI-206127
+2026-09-10T07:06:59.716Z,0.716726,5e90,6,Warning [FLog::Output] Hello World! CLI-210716
+2026-09-10T07:06:59.716Z,0.716726,5e90,6,Warning [FLog::Output] Hello World! CLI210530
+2026-09-10T07:06:59.716Z,0.716726,5e90,6,Warning [FLog::Output] Hello World CLI-212185!
+2026-09-10T07:06:59.716Z,0.716726,5e90,6,Warning [FLog::Output] Hello World! From Da Greatest - CLI213795
+2026-09-10T07:06:59.716Z,0.716726,5e90,6,Warning [FLog::Output] Hello World CLI-214387!
+2026-09-10T07:06:59.716Z,0.716726,5e90,6,Warning [FLog::Output] Hello World CLI-214500!
+2026-09-10T07:06:59.721Z,0.721724,3e64,100 [FLog::DataModelPatchConfigurer] deserializeAndVerifyPatch with blake3
+2026-09-10T07:06:59.835Z,0.835472,3e64,6,Warning [FLog::SingleSurfaceApp] Register rendering frequency during startup.
+2026-09-10T07:06:59.835Z,0.835472,3e64,6 [FLog::SingleSurfaceApp] setStage: (stage:InitializedLuaApp)
+2026-09-10T07:06:59.835Z,0.835472,3e64,6 [FLog::SingleSurfaceApp] startLuaApp: (stage:InitializedLuaApp).
+2026-09-10T07:06:59.835Z,0.835472,3e64,6 [FLog::SingleSurfaceApp] returnToLuaApp: (stage:InitializedLuaApp).
+2026-09-10T07:06:59.835Z,0.835472,3e64,6 [FLog::SingleSurfaceApp] returnToLuaAppInternal: ... App has been initialized, returning from game.
+2026-09-10T07:06:59.835Z,0.835472,3e64,6 [FLog::SurfaceController] [_:1]::replaceDataModel: (stage:0, window = 0x870682) [tid:0x003e64]
+2026-09-10T07:06:59.835Z,0.835472,3e64,6,Warning [FLog::Graphics] RenderView created[1]
+2026-09-10T07:06:59.837Z,0.837456,5e90,6,Info [FLog::CreatorOutput] Info: DataModel Loading rbxasset://places/Mobile.rbxl
+2026-09-10T07:06:59.843Z,0.843408,5e90,6,Info [FLog::TestServiceLog] [onServiceProvider] DebugUTPLauncherWebSocketUri='' wsOptIn=0
+2026-09-10T07:06:59.843Z,0.843408,5e90,6,Info [FLog::TestServiceLog] [onServiceProvider] this=0x10442880 dm=0x140e0c80 wsOptIn=0 isStudio=0 isServer=0 isPlayClient=0 isNonNetworkEdit=1
+2026-09-10T07:06:59.853Z,0.853329,5e90,6,Info [FLog::ExtractPackageDefinition] No captured package definitions to restore
+2026-09-10T07:06:59.854Z,0.854321,3e64,6 [FLog::Graphics] Adapter[0] info: Description=NVIDIA GeForce RTX 3070, VendorId=0x10de, DeviceId=0x2484, DedicatedVideoMemory=8407482368, DedicatedSystemMemory=0, SharedSystemMemory=17141086208
+2026-09-10T07:06:59.854Z,0.854321,3e64,6 [FLog::Graphics] Adapter[1] info: Description=Microsoft Basic Render Driver, VendorId=0x1414, DeviceId=0x8c, DedicatedVideoMemory=0, DedicatedSystemMemory=0, SharedSystemMemory=17141086208
+2026-09-10T07:06:59.858Z,0.858289,5e90,100 [FLog::DataModelPatchConfigurer] OTAPollingEnabled set to: false
+2026-09-10T07:07:00.208Z,1.208870,5e90,6 [FLog::SessionTransitionFSM] Initialized.
+2026-09-10T07:07:00.210Z,1.210883,5e90,6,Warning [DFLog::DMNotificationMonitor] DM notification received. Type 10
+2026-09-10T07:07:00.246Z,1.246108,4644,6,Info [DFLog::DesignFoundationsWin32] Win32DesignFoundationsImpl: onTokensCleared, 0 callbacks
+2026-09-10T07:07:00.285Z,1.285723,5e90,6,Warning [DFLog::DMNotificationMonitor] DM notification received. Type 10
+2026-09-10T07:07:00.332Z,1.332746,0418,12 [DFLog::HttpTraceError] HttpResponse(#18 0x1409a198) time:120.6ms (net:120.5ms timeInRetryQueue:0.0ms)status:401 Unauthorized bodySize:76 url:{ "https://apis.roblox.com/platform-chat-api/v1/get-conversation-metadata" } ip:128.116.45.3 external:0 numberOfTimesRetried:0
+2026-09-10T07:07:00.358Z,1.358758,3e64,6,Warning [FLog::Graphics] VRAM Local Budget: 7602176000 bytes, CurrentUsage: 7720960 bytes.
+2026-09-10T07:07:00.358Z,1.358758,3e64,6,Warning [FLog::Graphics] VRAM Non Local Budget: 16335779840 bytes, CurrentUsage: 757760 bytes.
+2026-09-10T07:07:00.359Z,1.359759,3e64,6 [FLog::Graphics] D3D11 Adapter: NVIDIA GeForce RTX 3070
+2026-09-10T07:07:00.359Z,1.359759,3e64,6 [FLog::Graphics] D3D11 Adapter: Vendor 10de Device 2484 VRAM 8018 RAM 16347
+2026-09-10T07:07:00.359Z,1.359759,3e64,6 [channel] Caps: ThreadSafe 0 Framebuffer 1 FpFramebuffer 1 Shaders 1 Compute 1 Instancing 1 PerInstanceStream 1 ConstBuffers 1
+2026-09-10T07:07:00.359Z,1.359759,3e64,6 [channel] Caps: Framebuffer: MRT 8 MSAA 8 Stencil 1
+2026-09-10T07:07:00.359Z,1.359759,3e64,6 [channel] Caps: Framebuffer: Depth16 1 Depth24 1 DepthFloat 1 DepthClamp 1
+2026-09-10T07:07:00.360Z,1.360759,3e64,6 [channel] Caps: Border Color 1
+2026-09-10T07:07:00.360Z,1.360759,3e64,6 [channel] Caps: Texture: RGB10A2 1 RG11B10F 1 R16I 1
+2026-09-10T07:07:00.360Z,1.360759,3e64,6 [channel] Caps: Texture: BC6H 1 ASTC HDR 0
+2026-09-10T07:07:00.360Z,1.360759,3e64,6 [channel] Caps: Texture: DXT 1 PVR 0 ETC1 0 ETC2 0 Half 1
+2026-09-10T07:07:00.360Z,1.360759,3e64,6 [channel] Caps: Texture: 3D 1 Array 1 Depth 1 MSAA 1 MSAAFP16 0
+2026-09-10T07:07:00.360Z,1.360759,3e64,6 [channel] Caps: Texture: NPOT 1 PartialMips 1 CubeMipGen 1 CubeFramebuffer 1
+2026-09-10T07:07:00.360Z,1.360759,3e64,6 [channel] Caps: Texture: Size 16384 Units 32 VertexUnits 16
+2026-09-10T07:07:00.360Z,1.360759,3e64,6 [channel] Caps: ConstantBufferSize 65536
+2026-09-10T07:07:00.360Z,1.360759,3e64,6 [channel] Caps: isAppleGPU 0
+2026-09-10T07:07:00.360Z,1.360759,3e64,6 [channel] Caps: 32bIdx 1 Memoryless 0
+2026-09-10T07:07:00.360Z,1.360759,3e64,6 [channel] Caps: RTFlip 0 MinusOneToOneDepth 0
+2026-09-10T07:07:00.381Z,1.381749,3e64,6,Warning [FLog::Graphics] D3D11: GfxCardName NVIDIA GeForce RTX 3070 GfxCardVendor 10de GfxFeatureLevel D3D11.1
+2026-09-10T07:07:00.382Z,1.382750,3e64,6 [FLog::Graphics] Video memory size: 2147483648
+2026-09-10T07:07:00.449Z,1.449769,3e64,6,Warning [FLog::Graphics] Loaded 4201 shaders from pack d3d11 variant default (18113927 bytes)
+2026-09-10T07:07:00.449Z,1.449769,3e64,6,Warning [FLog::Graphics] Compiled 1210 shaders in 66 ms. Is Multi-Threaded Loading: false. Shader Loading Threads: 0 (TaskScheduler: 16, Requested: 8, HardMax: 8).
+2026-09-10T07:07:00.450Z,1.450769,3e64,6,Warning [FLog::Graphics] TM2: retry:false
+2026-09-10T07:07:00.451Z,1.451770,3e64,6,Warning [FLog::Graphics] TM2: maxCloudAssetDimension: 4096
+2026-09-10T07:07:00.451Z,1.451770,3e64,6 [FLog::Graphics] Using TM2 in MipPackStream mode
+2026-09-10T07:07:00.451Z,1.451770,3e64,6,Warning [FLog::Graphics] Using TexturePackGenerator.
+2026-09-10T07:07:00.451Z,1.451770,3e64,6,Warning [FLog::Graphics] LightGrid is unified
+2026-09-10T07:07:00.461Z,1.461773,3e64,6,Warning [FLog::Graphics] DRS init: denied=false fullSizeFramebufferDenied=false canUseHighDPIFullFB=false
+2026-09-10T07:07:00.466Z,1.466774,3e64,6 [FLog::SurfaceController] SurfaceController::disableVR
+2026-09-10T07:07:00.466Z,1.466774,3e64,6,Warning [FLog::SurfaceController] SurfaceController[_:1]::initialize
+2026-09-10T07:07:00.467Z,1.467774,3e64,6 [FLog::SurfaceController] SurfaceController[_:1]::start dataModel(000000002373AD40)
+2026-09-10T07:07:00.467Z,1.467774,3e64,6 [FLog::SurfaceController] SurfaceController::RenderJob[_:1]::RenderJob
+2026-09-10T07:07:00.467Z,1.467774,3e64,6,Warning [FLog::SurfaceController] SurfaceController::RenderJob::setStartupThrottle: true
+2026-09-10T07:07:00.467Z,1.467774,3e64,6 [FLog::SurfaceController] SurfaceController[_:1]::run dataModel(000000002373AD40)
+2026-09-10T07:07:00.467Z,1.467774,3e64,6 [FLog::SingleSurfaceApp] setStage: (stage:LuaApp)
+2026-09-10T07:07:00.467Z,1.467774,3e64,6 [FLog::SingleSurfaceApp] userDidLogin
+2026-09-10T07:07:00.467Z,1.467774,3e64,6 [FLog::SingleSurfaceApp] applyLocale
+2026-09-10T07:07:00.467Z,1.467774,5e90,6,Info [DFLog::RbxTransportIoLibContext] RbxTransport I/O backend chosen: sys
+2026-09-10T07:07:00.467Z,1.467774,5664,6 [FLog::Output] Begin machine id check
+2026-09-10T07:07:00.468Z,1.468775,3e64,6,Warning [FLog::RobloxStarter] RobloxStarter destroyed
+2026-09-10T07:07:00.468Z,1.468775,3e64,6,Error [DFLog::WindowsThemeInit] Invalid or no theme value mapped to user id
+2026-09-10T07:07:00.468Z,1.468775,3e64,6,Warning [FLog::RobloxStarter] RobloxStarter destroyed
+2026-09-10T07:07:00.470Z,1.470775,3e64,6,Info [FLog::WindowsNativeAdsProtocol] Getting WindowsNativeAdsImpl instance
+2026-09-10T07:07:00.582Z,1.582932,0418,12 [DFLog::HttpTraceError] HttpResponse(#23 0x199ca898) time:116.0ms (net:115.9ms timeInRetryQueue:0.0ms)status:401 Unauthorized bodySize:76 url:{ "https://users.roblox.com/v1/users/authenticated/roles" } ip:128.116.45.3 external:0 numberOfTimesRetried:0
+2026-09-10T07:07:00.582Z,1.582932,0418,6 [FLog::Error] Error making UserRoleRequest. Received HTTPErrorCode 0, status code 401. 
+2026-09-10T07:07:00.584Z,1.584914,0418,12 [DFLog::HttpTraceError] HttpResponse(#24 0x199caf98) time:118.1ms (net:118.0ms timeInRetryQueue:0.0ms)status:401 Unauthorized bodySize:76 url:{ "https://accountsettings.roblox.com/v1/email" } ip:128.116.45.3 external:0 numberOfTimesRetried:0
+2026-09-10T07:07:00.584Z,1.584914,0418,6 [FLog::Error] Error making AccountSettingsEmailRequest. Received HTTPErrorCode 0, status code 401. 
+2026-09-10T07:07:00.586Z,1.586896,0418,12 [DFLog::HttpTraceError] HttpResponse(#22 0x199ca198) time:119.9ms (net:119.9ms timeInRetryQueue:0.0ms)status:401 Unauthorized bodySize:76 url:{ "https://users.roblox.com/v1/users/authenticated/app-launch-info" } ip:128.116.45.3 external:0 numberOfTimesRetried:0
+2026-09-10T07:07:00.586Z,1.586896,0418,6 [FLog::Error] Error making UserAppLaunchInfoRequest. Received HTTPErrorCode 0, status code 401. 
+2026-09-10T07:07:00.757Z,1.757885,0418,12 [DFLog::HttpTraceError] HttpResponse(#25 0x23aa0098) time:289.6ms (net:289.5ms timeInRetryQueue:0.0ms)status:401  bodySize:76 url:{ "https://voice.roblox.com/v1/turn/all-regions" } ip:128.116.45.3 external:0 numberOfTimesRetried:0
+2026-09-10T07:07:00.757Z,1.757885,0418,6,Warning [DFLog::TurnApiClient] TurnApiClient: HTTP failure (err=0, status=401) — backing off
+2026-09-10T07:07:01.477Z,2.477317,4644,6 [FLog::SurfaceController] SurfaceController::RenderJob::stepDataModelJob: No DM yet. Continue...
+2026-09-10T07:07:01.477Z,2.477317,3e64,6 [FLog::SurfaceController] SurfaceController::RenderJob::scheduleRender: No data model. Bind workspace now...
+2026-09-10T07:07:01.477Z,2.477317,3e64,6,Warning [FLog::Graphics] TM2: maxCloudAssetDimension: 4096
+2026-09-10T07:07:01.484Z,2.484931,3e64,6,Info [FLog::D3D11SwapChain] validate: resize triggered swapChain=0x62c07010 dims=1440x1009 hasFB=true
+2026-09-10T07:07:01.484Z,2.484931,3e64,6,Info [FLog::D3D11SwapChain] validate: gpu=NVIDIA GeForce RTX 3070
+2026-09-10T07:07:01.484Z,2.484931,3e64,6,Info [FLog::D3D11SwapChain] resizeWindowData: swapChain=0x62c07010 windowHandle=0x870682 dims=1440x1009
+2026-09-10T07:07:01.484Z,2.484931,3e64,6,Info [FLog::D3D11SwapChain] resizeSwapchain: ResizeBuffers explicit 1440x1009 swapChain=0x62c07010
+2026-09-10T07:07:01.485Z,2.485931,3e64,6 [FLog::Graphics] Future is bright shadows
+2026-09-10T07:07:01.487Z,2.487932,3e64,6 [FLog::Graphics] LayeredClothingMode updated: LC=1 HSR=1
+2026-09-10T07:07:01.488Z,2.488932,3e64,6 [FLog::Graphics] Terrain TextureArray 512x512, arraySize: 36, mip: 10
+2026-09-10T07:07:01.494Z,2.494933,3e64,6 [FLog::Graphics] SceneManager: resizing main targets to 1440x1009
+2026-09-10T07:07:01.495Z,2.495933,5630,6,Critical [DFLog::RbxStorage] RbxStorage::init [INIT] user: AssetProvider, availableDiskSpace: 381165998080 bytes, elapsed: 1.000 ms
+2026-09-10T07:07:01.513Z,2.513937,4644,6 [FLog::Error] Asset (Image) "rbxthumb://type=AvatarHeadShot&id=&w=48&h=48&filters=circular&includebackground=true&includeprofileframe=true" load failed: Error parsing batch thumbnail request, invalid format
+2026-09-10T07:07:01.534Z,2.534941,5630,6,Critical [DFLog::RbxStorage] RbxStorage::init [DONE] name: MultiCache(TelemetryCache(SqliteCache+TelemetryCache(FileCache(temp))), TelemetryCache(FileCache(perm)), TelemetryCache(FileCache(session_scoped))), duration: 40.008 ms, dbOpenCount: 226
+2026-09-10T07:07:01.830Z,2.830530,4644,6 [FLog::Error] Asset (Image) "rbxthumb://type=AvatarHeadShot&id=0&w=48&h=48&filters=circular&includebackground=true&includeprofileframe=true" load failed: The requested Ids are invalid, of an invalid type or missing.
+2026-09-10T07:07:01.876Z,2.876699,0418,12 [DFLog::HttpTraceError] HttpResponse(#34 0x23aa0798) time:115.9ms (net:115.9ms timeInRetryQueue:0.0ms)status:401  bodySize:76 url:{ "https://voice.roblox.com/v1/turn/all-regions" } ip:128.116.45.3 external:0 numberOfTimesRetried:0
+2026-09-10T07:07:01.876Z,2.876699,0418,6,Warning [DFLog::TurnApiClient] TurnApiClient: HTTP failure (err=0, status=401) — backing off
+2026-09-10T07:07:03.477Z,4.477522,3e64,6 [FLog::Error] Asset (Image) "rbxthumb://type=AvatarHeadShot&id=&w=48&h=48&filters=circular&includebackground=true&includeprofileframe=true" load failed: Temp read failed.
+2026-09-10T07:07:03.477Z,4.477522,3e64,6 [FLog::Error] Asset (Image) "rbxthumb://type=AvatarHeadShot&id=0&w=48&h=48&filters=circular&includebackground=true&includeprofileframe=true" load failed: Temp read failed.
+2026-09-10T07:07:03.479Z,4.479519,3e64,6 [FLog::Error] Asset (Image) "rbxthumb://type=AvatarHeadShot&id=&w=48&h=48&filters=circular&includebackground=true&includeprofileframe=true" load failed: Invalid image or texture.
+2026-09-10T07:07:03.479Z,4.479519,3e64,6 [FLog::Error] Asset (Image) "rbxthumb://type=AvatarHeadShot&id=0&w=48&h=48&filters=circular&includebackground=true&includeprofileframe=true" load failed: Invalid image or texture.
+2026-09-10T07:07:03.805Z,4.805630,2ff4,6,Error [DFLog::ClientBlockedImage] Blocked DLL: \device\harddiskvolume3\windows\system32\nvspcap64.dll
+2026-09-10T07:07:03.993Z,4.993802,0418,12 [DFLog::HttpTraceError] HttpResponse(#45 0x23aa0798) time:116.0ms (net:116.0ms timeInRetryQueue:0.0ms)status:401  bodySize:76 url:{ "https://voice.roblox.com/v1/turn/all-regions" } ip:128.116.45.3 external:0 numberOfTimesRetried:0
+2026-09-10T07:07:03.993Z,4.993802,0418,6,Warning [DFLog::TurnApiClient] TurnApiClient: HTTP failure (err=0, status=401) — backing off
+2026-09-10T07:07:04.179Z,5.179807,5e90,6,Warning [FLog::CreatorWarning] Warning: [Roblox][CorePackages.LuauForgeChunks.bundled] HTTP error url:`https://apis.roblox.com/attribution/v1/events/post-authentication`
+2026-09-10T07:07:04.179Z,5.179807,5e90,6,Warning [FLog::CreatorWarning] Warning: [Roblox][CorePackages.LuauForgeChunks.bundled] HTTP error code:`nil`
+2026-09-10T07:07:04.179Z,5.179807,5e90,6,Warning [FLog::CreatorWarning] Warning: [Roblox][CorePackages.LuauForgeChunks.bundled] HTTP error body:`nil`
+2026-09-10T07:07:04.213Z,5.213771,5e90,6,Info [DFLog::DesignFoundationsWin32] Win32DesignFoundationsImpl: onTokensCleared, 0 callbacks
+2026-09-10T07:07:04.476Z,5.476468,3e64,6 [FLog::Error] Asset (Image) "rbxthumb://type=AvatarHeadShot&id=&w=48&h=48&filters=circular&includebackground=true&includeprofileframe=true" load failed: Temp read failed.
+2026-09-10T07:07:04.478Z,5.478622,3e64,6 [FLog::Error] Asset (Image) "rbxthumb://type=AvatarHeadShot&id=&w=48&h=48&filters=circular&includebackground=true&includeprofileframe=true" load failed: Invalid image or texture.
+2026-09-10T07:07:06.044Z,7.044950,4644,6,Info [FLog::Systray] Auto startup is enabled
+2026-09-10T07:07:06.045Z,7.045957,3e64,6 [FLog::LogWin32BTId] LogWin32BTId, App, cookie Engine => Native set RBXEventTrackerV2 as CreateDate=09/10/2026 01:41:08&rbxuid=11144054151&browserid=1776027710375002&rbxid=11140497212
+2026-09-10T07:07:06.049Z,7.049984,4644,6,Info [FLog::Systray] Show the tray icon
+2026-09-10T07:07:06.049Z,7.049984,4644,6,Warning [DFLog::DMNotificationMonitor] DM notification received. Type 28
+2026-09-10T07:07:06.064Z,7.064079,4644,6,Warning [DFLog::DMNotificationMonitor] DM notification received. Type 10
+2026-09-10T07:07:06.064Z,7.064079,4644,6,Warning [DFLog::DMNotificationMonitor] DM notification received. Type 10
+2026-09-10T07:07:06.082Z,7.082938,4644,6,Warning [FLog::SingleSurfaceApp] Restoring rendering frequency to normal.
+2026-09-10T07:07:06.082Z,7.082938,4644,6,Warning [FLog::SurfaceController] SurfaceController::RenderJob::setStartupThrottle: false
+2026-09-10T07:07:06.131Z,7.131680,5e90,6 [FLog::SessionTransitionFSM] Session history: IA
+2026-09-10T07:07:06.131Z,7.131680,5e90,6 [FLog::SessionTransitionFSM] Entered app session.
+2026-09-10T07:07:06.351Z,7.351830,0418,6,Info [FLog::PerformanceControlIXP] Is device exposed to experiments: false
+2026-09-10T07:07:06.818Z,7.818614,3c68,100 [FLog::DataModelPatchConfigurer] [_UniversalAppPatch] Update OTA config
+2026-09-10T07:07:06.821Z,7.821614,3c68,100 [FLog::DataModelPatchConfigurer] [_InExperiencePatch] Load configs for user key: app:5291221364658068319
+2026-09-10T07:07:06.823Z,7.823614,3c68,100 [FLog::DataModelPatchConfigurer] [_InExperiencePatch] Update OTA config
+2026-09-10T07:07:06.823Z,7.823614,3c68,6,Info [DFLog::FlagCache] [FlagCache] Writing pending flag cache to disk
+2026-09-10T07:07:06.824Z,7.824613,5e90,6,Info [DFLog::FlagCache] [FlagCache] writeFlagCache: Writing flag cache file to : C:\Users\netdo\AppData\Local\Temp\Roblox\cache\flag_cache.dat
+2026-09-10T07:07:06.824Z,7.824613,5e90,6,Debug [DFLog::FlagCache] [FlagCache] writeFlagCache: Wrote signatureSize: 88
+2026-09-10T07:07:06.824Z,7.824613,5e90,6,Debug [DFLog::FlagCache] [FlagCache] writeFlagCache: Wrote signature of length 88. Signature: 3ChE...
+2026-09-10T07:07:06.824Z,7.824613,5e90,6,Debug [DFLog::FlagCache] [FlagCache] writeFlagCache: Wrote compression type: 0
+2026-09-10T07:07:06.824Z,7.824613,5e90,6,Info [DFLog::FlagCache] [FlagCache] writeFlagCache: Writing uncompressed flag cache data
+2026-09-10T07:07:06.825Z,7.825613,5e90,6,Info [DFLog::FlagCache] [FlagCache] writeFlagCache: Successfully wrote 1281602 bytes to file: C:\Users\netdo\AppData\Local\Temp\Roblox\cache\flag_cache.dat, time: 0.9997909999945875ms
+2026-09-10T07:07:06.825Z,7.825613,5664,6,Info [FLog::TombstoneCache] [FlagCache] Tombstone 1, expiry time 360, holdout false, channel '' (production), written to file: C:\Users\netdo\AppData\Local\Temp\Roblox\cache\tombstone.dat
+2026-09-10T07:07:06.867Z,7.867604,3c68,6,Warning [DFLog::RbxmFileManager] LocalStorageManager is not available.
+2026-09-10T07:07:06.867Z,7.867604,3c68,6,Warning [FLog::SingleSurfaceApp] Restoring rendering frequency to normal.
+2026-09-10T07:07:06.867Z,7.867604,3c68,6,Warning [FLog::SurfaceController] SurfaceController::RenderJob::setStartupThrottle: false
+2026-09-10T07:07:06.936Z,7.936605,5664,6,Info [FLog::WindowsNativeAdsProtocol] handleCloseAd called, attempting to marshall.
+2026-09-10T07:07:06.936Z,7.936605,5664,6,Info [FLog::WindowsNativeAdsProtocol] Getting WindowsNativeAdsImpl instance
+2026-09-10T07:07:06.937Z,7.937605,3e64,6 [FLog::WindowsNativeAdsProtocol] AdPlayer step5 to quit browser finish!
+2026-09-10T07:07:06.937Z,7.937605,3e64,6 [FLog::WindowsNativeAdsProtocol] AdPlayer step5 adPlayer has never been initialized or has been reset
+2026-09-10T07:07:07.024Z,8.024640,0418,100 [FLog::DataModelPatchConfigurer] [_UniversalAppPatch] Update OTA succeeded
+2026-09-10T07:07:07.024Z,8.024640,0418,100 [FLog::DataModelPatchConfigurer] [_UniversalAppPatch] Update OTA config not deployed
+2026-09-10T07:07:07.054Z,8.054646,0418,100 [FLog::DataModelPatchConfigurer] [_InExperiencePatch] Update OTA succeeded
+2026-09-10T07:07:07.054Z,8.054646,0418,100 [FLog::DataModelPatchConfigurer] [_InExperiencePatch] Update OTA config not deployed
+2026-09-10T07:07:07.526Z,8.526843,5084,6,Info [FLog::PaymentsProtocolImpl] XStoreEnumerateProductsQuery started!
+2026-09-10T07:07:07.611Z,8.611578,5e90,6,Warning [FLog::Output] Wrap-deformer fetching meshes resulted in error.  Skipping follow-on stages.
+2026-09-10T07:07:07.611Z,8.611578,5e90,6,Warning [FLog::Output] Wrap-deformer fetching meshes resulted in error.  Skipping follow-on stages.
+2026-09-10T07:07:07.797Z,8.797704,5f30,12 [DFLog::HttpTraceError] CURLOPT_ERRORBUFFER: Connection timed out after 5000 milliseconds
+2026-09-10T07:07:07.797Z,8.797704,0418,12 [DFLog::HttpTraceError] HttpResponse(#39 0xecc2a98) time:4999.4ms (net:4999.4ms timeInRetryQueue:0.0ms) error:5 message:HttpError: Timedout url:{ "https://silver.roblox.com/_/_/1px.gif" } ip: external:0 numberOfTimesRetried:0
+2026-09-10T07:07:07.868Z,8.868183,3c68,100,Warning [FLog::DataModelPatchConfigurer] getCachedPatch Local Patch DataModelPatchConfig : type=2, assetId=80471914653504, assetVersion=13359, maxAppVersion=738, localAssetURI=rbxasset://models/InExperience/InExperience.rbxm
+2026-09-10T07:07:07.868Z,8.868183,3c68,100,Warning [FLog::DataModelPatchConfigurer] getCachedPatch: config: 80471914653504.13359
+2026-09-10T07:07:07.868Z,8.868183,3c68,100,Warning [FLog::DataModelPatchConfigurer] getCachedPatch: numAttemptsRemaining: 1
+2026-09-10T07:07:07.868Z,8.868183,3c68,100,Warning [FLog::DataModelPatchConfigurer] getCachedPatchFromConfig: contentId=rbxasset://models/InExperience/InExperience.rbxm
+2026-09-10T07:07:07.868Z,8.868183,3c68,100,Warning [FLog::DataModelPatchConfigurer] getCachedPatch: get patch from content provider for Model
+2026-09-10T07:07:07.868Z,8.868183,3c68,6,Warning [DFLog::RbxmFileManager] LocalStorageManager is not available.
+2026-09-10T07:07:07.874Z,8.874225,3c68,100 [FLog::DataModelPatchConfigurer] deserializeAndVerifyPatch with blake3
+2026-09-10T07:07:08.120Z,9.120656,53f0,6,Info [DFLog::RbxTransportStunPopProbe] TURN seed: 24 PoPs (carried 0, fresh 24)
+2026-09-10T07:07:15.865Z,16.865112,5664,100 [FLog::DataModelPatchConfigurer] [_UniversalAppPatch] Update OTA config
+2026-09-10T07:07:15.865Z,16.865112,5664,100 [FLog::DataModelPatchConfigurer] [_InExperiencePatch] Update OTA config
+2026-09-10T07:07:16.295Z,17.295490,5e90,6,Warning [DFLog::DMNotificationMonitor] DM notification received. Type 35
+2026-09-10T07:07:16.295Z,17.295490,3e64,6,Error [FLog::ExperienceContextHolder] Unsafe call with no engine context.
+2026-09-10T07:07:16.295Z,17.295490,3e64,6,Error [FLog::ExperienceCoordinator] submitDataModelTask: Invalid DM for Voice.
+2026-09-10T07:07:16.295Z,17.295490,3e64,6,Error [FLog::ExperienceContextHolder] Unsafe call with no engine context.
+2026-09-10T07:07:16.295Z,17.295490,3e64,6,Error [FLog::ExperienceCoordinator] submitDataModelTask: Invalid DM for Ugc.
+2026-09-10T07:07:16.318Z,17.318493,3e64,6,Info [FLog::Systray] Successfully launched new process in systray mode
+2026-09-10T07:07:16.333Z,17.333496,3a18,6,Info [FLog::WndProcessCheck] WindowsAppReloadTelemetry EventWaitResultUpdate
+2026-09-10T07:07:16.333Z,17.333496,3e64,6 [DFLog::SignalRCoreError] ID: 1 Disconnected - stop() called
+2026-09-10T07:07:16.335Z,17.335497,3e64,6 [FLog::SingleSurfaceApp] shutDown: (stage:LuaApp).
+2026-09-10T07:07:16.335Z,17.335497,3e64,6,Error [FLog::ExperienceContextHolder] Unsafe call with no engine context.
+2026-09-10T07:07:16.335Z,17.335497,3e64,6,Error [FLog::ExperienceCoordinator] submitDataModelTask: Invalid DM for Voice.
+2026-09-10T07:07:16.335Z,17.335497,3e64,6,Error [FLog::ExperienceContextHolder] Unsafe call with no engine context.
+2026-09-10T07:07:16.335Z,17.335497,3e64,6,Error [FLog::ExperienceCoordinator] submitDataModelTask: Invalid DM for Ugc.
+2026-09-10T07:07:16.335Z,17.335497,3e64,6,Warning [FLog::SurfaceController] SurfaceController[_:1]::pause destroyView:true.
+2026-09-10T07:07:16.335Z,17.335497,3e64,6 [FLog::SurfaceController] drainRenderingJobs
+2026-09-10T07:07:16.336Z,17.336496,3e64,6,Warning [FLog::Graphics] TM2: maxCloudAssetDimension: 4096
+2026-09-10T07:07:16.340Z,17.340496,3e64,6,Warning [FLog::Graphics] RenderView destroyed[1] appExiting:false
+2026-09-10T07:07:16.340Z,17.340496,3e64,6,Warning [FLog::Graphics] TM2: maxCloudAssetDimension: 4096
+2026-09-10T07:07:16.352Z,17.352499,3e64,6,Warning [FLog::Graphics] Residual refcounts after teardown: device 1210 context 0
+2026-09-10T07:07:16.352Z,17.352499,3e64,6 [FLog::SurfaceController] stop
+2026-09-10T07:07:16.352Z,17.352499,3e64,6 [FLog::SurfaceController] drainRenderingJobs
+2026-09-10T07:07:16.352Z,17.352499,3e64,6 [FLog::SingleSurfaceApp] destroyLuaApp: (stage:LuaApp) blocking:true.
+2026-09-10T07:07:16.482Z,17.482574,3e64,6,Info [FLog::TestServiceLog] [onServiceProvider] DebugUTPLauncherWebSocketUri='' wsOptIn=0
+2026-09-10T07:07:16.509Z,17.509558,3e64,6,Warning [FLog::UgcExperienceController] UgcExperienceController: finalize: Did not finalize due to state.
+2026-09-10T07:07:16.509Z,17.509558,3e64,6,Warning [FLog::SingleSurfaceApp] destroyLuaApp: (stage:LuaApp)... finished destroying luaApp.
+2026-09-10T07:07:16.509Z,17.509558,3e64,6 [FLog::SingleSurfaceApp] setStage: (stage:None)
+2026-09-10T07:07:16.509Z,17.509558,3e64,6 [FLog::SingleSurfaceApp] destroy controllers
+2026-09-10T07:07:16.509Z,17.509558,3e64,6,Info [FLog::UgcExperienceController] UgcExperienceController::~UgcExperienceController()
+2026-09-10T07:07:16.509Z,17.509558,3e64,6 [FLog::SurfaceController] SurfaceController[_:1]::~SurfaceController, count: 0
+2026-09-10T07:07:16.509Z,17.509558,3e64,6 [FLog::SingleSurfaceApp] setStage: (stage:Native)
+2026-09-10T07:07:16.509Z,17.509558,3e64,6 [FLog::LogWin32BTId] LogWin32BTId, App, internal browser session end
