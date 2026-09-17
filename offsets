@@ -7,7 +7,7 @@
 /*  Source code     : https://git.imtheo.lol/theo/RbxDumperV2   
 /*  Roblox Version  : unknown
 /*  Dumper Version  : 2.2.3
-/*  Dumped At       : 05:58 17/09/2026 (GMT)
+/*  Dumped At       : 06:11 17/09/2026 (GMT)
 /*  Total Offsets   : 392
 /* -------------------------------------------------------------
 /*  Join the discord!                                           
@@ -516,7 +516,7 @@ namespace Offsets {
     }
 
     namespace StatsItem {
-         inline constexpr uintptr_t Value = 0x24da;
+         inline constexpr uintptr_t Value = 0xb0;
     }
 
     namespace SunRaysEffect {
